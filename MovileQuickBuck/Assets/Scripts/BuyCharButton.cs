@@ -7,13 +7,18 @@ public class BuyCharButton : MonoBehaviour {
 	public CharType buttonType;
 	private Image buttonImage;
 
+	public Sprite selectedImage;
+	public Sprite unselectedImage;
+
 	public void checkAble(int able){
 
-		if (able > 0) {
-			buttonImage.color = Color.blue;
-		}else{
-			buttonImage.color = Color.black;
-		}
+//		if (able > 0) {
+//			buttonImage.color = Color.blue;
+//		}else{
+//			buttonImage.color = Color.black;
+//		}
+
+		buttonImage.sprite = unselectedImage;
 	}
 
 	public void SetInteractable (bool interactable){
@@ -29,7 +34,7 @@ public class BuyCharButton : MonoBehaviour {
 
 	public void selectButton(){
 
-		buttonImage.color = Color.green;
+		buttonImage.sprite = selectedImage;
 
 	}
 	

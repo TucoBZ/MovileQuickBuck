@@ -18,7 +18,7 @@ public class PowliticosStore : MonoBehaviour {
 	public Text p1Name;
 	public Text p2Name;
 
-	public BuyCharButton[] buttons;
+	public BuyCharButton[] charButtons;
 	private GameController controller;
 	//public AudioClip _beachSound;
 	//public AudioClip _mainMusic;
@@ -69,11 +69,19 @@ public class PowliticosStore : MonoBehaviour {
 		//AudioManager.GetInstance ().PlayMusicWithPriority2 (_mainMusic, 0.3f);
 		
 	}
+
+	void Update(){
+		if (controller.isReady ()) {
+			SetAllButtonsInteractable(false);
+		}
+	
+	}
+
 	private void SelectButton(CharType type){
 
 		CheckButtons ();
 
-		foreach (BuyCharButton bt in buttons) {
+		foreach (BuyCharButton bt in charButtons) {
 			if (bt.buttonType == type){
 				bt.selectButton();
 			}
@@ -92,7 +100,7 @@ public class PowliticosStore : MonoBehaviour {
 
 	private void CheckButtons(){
 			
-		foreach(BuyCharButton bt in buttons){
+		foreach(BuyCharButton bt in charButtons){
 			int balance;
 
 			switch (bt.buttonType) {
@@ -126,6 +134,7 @@ public class PowliticosStore : MonoBehaviour {
 	public void CancelBT(){
 
 		controller.UndoSelection ();
+		SetAllButtonsInteractable(true);
 
 	}
 
@@ -198,7 +207,7 @@ public class PowliticosStore : MonoBehaviour {
 
 	private void SetAllButtonsInteractable (bool interactable)
 	{
-		foreach (BuyCharButton button in buttons) {
+		foreach (BuyCharButton button in charButtons) {
 			button.SetInteractable(interactable);
 		}
 

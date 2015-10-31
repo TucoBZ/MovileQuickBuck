@@ -1,0 +1,254 @@
+fileFormatVersion: 2
+guid: 012d3a8c26d9645e0b3d29a4124877a3
+timeCreated: 1446328751
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: QuickBuck Sprites_0
+    21300002: QuickBuck Sprites_1
+    21300004: QuickBuck Sprites_2
+    21300006: QuickBuck Sprites_3
+    21300008: QuickBuck Sprites_4
+    21300010: QuickBuck Sprites_5
+    21300012: QuickBuck Sprites_6
+    21300014: QuickBuck Sprites_7
+    21300016: QuickBuck Sprites_8
+    21300018: QuickBuck Sprites_9
+    21300020: QuickBuck Sprites_10
+    21300022: QuickBuck Sprites_11
+    21300024: QuickBuck Sprites_12
+    21300026: QuickBuck Sprites_13
+    21300028: QuickBuck Sprites_14
+    21300030: QuickBuck Sprites_15
+    21300032: QuickBuck Sprites_16
+    21300034: QuickBuck Sprites_17
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: QuickBuck Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 390
+        width: 829
+        height: 1473
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_1
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 1727
+        width: 127
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_2
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 1727
+        width: 127
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_3
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 1650
+        width: 200
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1556
+        width: 77
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_5
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 1507
+        width: 74
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_6
+      rect:
+        serializedVersion: 2
+        x: 1542
+        y: 1496
+        width: 109
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_7
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 1502
+        width: 75
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_8
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 1160
+        width: 230
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_9
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 1379
+        width: 48
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_10
+      rect:
+        serializedVersion: 2
+        x: 1627
+        y: 1379
+        width: 49
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_11
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 1182
+        width: 539
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_12
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 995
+        width: 277
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_13
+      rect:
+        serializedVersion: 2
+        x: 1465
+        y: 995
+        width: 277
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_14
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 869
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_15
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 829
+        width: 277
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_16
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 806
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck Sprites_17
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 231
+        width: 539
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
