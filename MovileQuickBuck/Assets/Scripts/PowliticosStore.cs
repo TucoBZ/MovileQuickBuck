@@ -17,6 +17,7 @@ public class PowliticosStore : MonoBehaviour {
 
 	public Text p1Name;
 	public Text p2Name;
+	public Text gameMode;
 
 	public BuyCharButton[] charButtons;
 	private GameController controller;
@@ -59,7 +60,13 @@ public class PowliticosStore : MonoBehaviour {
 		controller.player2Name = p2Name;
 		controller.versusBT = versusBT;
 		controller.ResetGame ();
-		
+
+		if (controller.isInArcadeMode()) {
+			gameMode.text = "Arcade";	
+		} else {
+			gameMode.text = "Multiplayer";
+		}
+
 		if (!SoomlaStore.Initialized)
 			SoomlaStore.Initialize (new PowliticosStoreAssets ());
 		else
@@ -152,7 +159,7 @@ public class PowliticosStore : MonoBehaviour {
 
 		SetAllButtonsInteractable (false);
 
-		if (Application.internetReachability != NetworkReachability.NotReachable) {
+		if (Application.internetReachability == NetworkReachability.NotReachable) {
 			
 			try {
 				
@@ -188,20 +195,9 @@ public class PowliticosStore : MonoBehaviour {
 			}
 			
 		} else {
-			
-//			StartCoroutine(LoadAlert(
-//				"Internet Conection",
-//				"You aren't connect to the internet! To access this content try to Reconnect.",
-//				"Reconnect",
-//				amount,
-//				PowerUP.NONE,
-//				RewardType.NONE,
-//				0,
-//				LayoutType.INFO
-//				));
-//			
-//			_loadingScreen.DestroyThisLoading();
-			
+
+			LoadAlertConnection();
+
 		}
 	}
 
@@ -213,7 +209,12 @@ public class PowliticosStore : MonoBehaviour {
 
 	}
 	
-
+	private void LoadAlertConnection(){
+		GameObject req = Resources.Load<GameObject> ("Prefabs/AlertInternet_Canvas");
+		Instantiate (req as GameObject, Vector3.zero, Quaternion.identity);
+		SetAllButtonsInteractable (true);
+	
+	}
 	
 //	
 //	///Load do Loading

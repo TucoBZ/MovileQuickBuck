@@ -20,7 +20,7 @@ MonoBehaviour:
     - name: SoomlaSecret
       value: POWLITICOSQUICKBUCK
     - name: DebugUnityMessages
-      value: True
+      value: False
     - name: GPlayBP
       value: True
     - name: AndroidPublicKey
