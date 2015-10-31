@@ -149,7 +149,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: powliticos_key.keystore
+  AndroidKeystoreName: 
   AndroidKeyaliasName: powliticos
   AndroidTVCompatibility: 1
   AndroidIsGame: 1

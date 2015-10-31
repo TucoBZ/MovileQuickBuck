@@ -156,8 +156,8 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 			_textCenter.gameObject.SetActive(false);
 
-			_textButtonUp.text = "Preparado?"; 
-			_textButtonDown.text = "Preparado?";
+			_textButtonUp.text = "Começar"; 
+			_textButtonDown.text = "Começar";
 
 			_playerUpButton.gameObject.SetActive(true);
 			_playerDownButton.gameObject.SetActive(true);
