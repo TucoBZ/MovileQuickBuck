@@ -10,8 +10,16 @@ public enum CharType {RANDOM, JWYLLYS, JBOLSONARO}
 public class PowliticosStore : MonoBehaviour {
 	
 
-	public BuyCharButton[] buttons;
+	public Button randomBT;
+	public Button undoBT;
+	public Button confirmBT;
+	public Button versusBT;
 
+	public Text p1Name;
+	public Text p2Name;
+
+	public BuyCharButton[] charButtons;
+	private GameController controller;
 	//public AudioClip _beachSound;
 	//public AudioClip _mainMusic;
 	
@@ -45,9 +53,12 @@ public class PowliticosStore : MonoBehaviour {
 		StoreEvents.OnBillingNotSupported 			+= onBillingNotSupported;
 		
 		
-		
-		
-		
+		//Ajuste do Controller
+		controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+		controller.player1Name = p1Name;
+		controller.player2Name = p2Name;
+		controller.versusBT = versusBT;
+		controller.ResetGame ();
 		
 		if (!SoomlaStore.Initialized)
 			SoomlaStore.Initialize (new PowliticosStoreAssets ());
@@ -58,27 +69,41 @@ public class PowliticosStore : MonoBehaviour {
 		//AudioManager.GetInstance ().PlayMusicWithPriority2 (_mainMusic, 0.3f);
 		
 	}
+
+	void Update(){
+		if (controller.isReady ()) {
+			SetAllButtonsInteractable(false);
+		}
+	
+	}
+
 	private void SelectButton(CharType type){
 
 		CheckButtons ();
 
-		foreach (BuyCharButton bt in buttons) {
+		foreach (BuyCharButton bt in charButtons) {
 			if (bt.buttonType == type){
 				bt.selectButton();
 			}
 		}
+
+		SelectCharInController (type);
+
 	}
+
+	private void SelectCharInController(CharType type){
+
+		controller.changePlayerSelection(type);
+	
+	}
+
 
 	private void CheckButtons(){
 			
-		foreach(BuyCharButton bt in buttons){
+		foreach(BuyCharButton bt in charButtons){
 			int balance;
 
 			switch (bt.buttonType) {
-			case CharType.RANDOM:
-				bt.checkAble(1);
-
-				break;
 			case CharType.JWYLLYS:
 				balance = StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID);
 				bt.checkAble(balance);
@@ -100,34 +125,123 @@ public class PowliticosStore : MonoBehaviour {
 
 	}
 
+
+	public void RandomBT(){
+		CheckButtons ();
+		controller.NullConfirm ();
+	}
+
+	public void CancelBT(){
+
+		controller.UndoSelection ();
+		SetAllButtonsInteractable(true);
+
+	}
+
+	public void ConfirmBT(){
+
+		controller.ConfirmSelection();
+		CheckButtons ();
+
+	}
+	
+	public void BuyChar (int type)
+	{
+		
+		//LoadLoading ();
+
+		SetAllButtonsInteractable (false);
+
+		if (Application.internetReachability != NetworkReachability.NotReachable) {
+			
+			try {
+				
+				switch (type) {
+				case (int)CharType.JWYLLYS:
+					if (StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID) > 0){
+						//Select this char
+						SelectButton(CharType.JWYLLYS);
+
+					}else{
+						StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID);
+					}
+
+					break;
+				case (int)CharType.JBOLSONARO:
+					if (StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID) > 0){
+						//Select this char
+						SelectButton(CharType.JBOLSONARO);
+
+					}else{
+						StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID);
+					}
+
+					break;
+				default:
+					break;
+					
+				}
+			} catch (Exception e) {
+				
+				//_loadingScreen.DestroyThisLoading();
+				Debug.Log ("unity/soomla:" + e.Message);
+			}
+			
+		} else {
+			
+//			StartCoroutine(LoadAlert(
+//				"Internet Conection",
+//				"You aren't connect to the internet! To access this content try to Reconnect.",
+//				"Reconnect",
+//				amount,
+//				PowerUP.NONE,
+//				RewardType.NONE,
+//				0,
+//				LayoutType.INFO
+//				));
+//			
+//			_loadingScreen.DestroyThisLoading();
+			
+		}
+	}
+
+	private void SetAllButtonsInteractable (bool interactable)
+	{
+		foreach (BuyCharButton button in charButtons) {
+			button.SetInteractable(interactable);
+		}
+
+	}
+	
+
+	
+//	
+//	///Load do Loading
+//	private void LoadLoading()
+//	{
+//		
+//		GameObject req = Resources.Load<GameObject> ("prefabs/Outros/Canvas_Loading");
+//		
+//		GameObject go = Instantiate (req as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
+//		
+//		_loadingScreen = go.GetComponent<Loading> ();
+//		
+//		_loadingScreen.UpdateInfoText ();
+//		
+//	}
+
 	private void OnSoomlaStoreInitialized ()
 	{
 		Debug.Log ("OnSoomlaStoreInitialized");
-
-
-		CheckButtons ();
-		BuyChar (0);
-		//Verifico os valores atuais do banco
-		//amountOfPearlText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.CURRENCY1_ID);
-		//amountOfCoinsText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.CURRENCY2_ID);
-		//magnetsText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.MAGNET_ID);
-		//shieldsText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.SHIELD_ID);
-		//thundersText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.THUNDER_ID);
 		
-
+		CheckButtons ();
+		
 	}
 	
 	public void onCurrencyBalanceChanged (VirtualCurrency virtualCurrency, int balance, int amountAdded)
 	{
 		Debug.Log ("onCurrencyBalanceChanged");
 		
-		
-//		if (amountOfCoinsText != null && amountOfPearlText != null) {
-//			
-//			amountOfPearlText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.CURRENCY1_ID);
-//			amountOfCoinsText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.CURRENCY2_ID);
-//			SetAllButtonsInteractable (true);
-//		}
 		CheckButtons ();
 	}
 	
@@ -136,40 +250,29 @@ public class PowliticosStore : MonoBehaviour {
 		
 		Debug.Log ("OnItemPurchased");
 		
-		///magnetsText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.MAGNET_ID);
-		//shieldsText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.SHIELD_ID);
-		//thundersText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.THUNDER_ID);
-
 		CheckButtons ();
 	}
 	
 	public void onMarketPurchase(PurchasableVirtualItem pvi, string payload,
 	                             Dictionary<string, string> extra) {
-		// pvi - the PurchasableVirtualItem that was just purchased
-		// payload - a text that you can give when you initiate the purchase operation and
-		//    you want to receive back upon completion
-		// extra - contains platform specific information about the market purchase
-		//    Android: The "extra" dictionary will contain: 'token', 'orderId', 'originalJson', 'signature', 'userId'
-		//    iOS: The "extra" dictionary will contain: 'receiptUrl', 'transactionIdentifier', 'receiptBase64', 'transactionDate', 'originalTransactionDate', 'originalTransactionIdentifier'
 		
 		//if (_loadingScreen)
-			//_loadingScreen.DestroyThisLoading ();
-
+		//_loadingScreen.DestroyThisLoading ();
+		
 		CheckButtons ();
-
+		
 		Debug.Log ("onMarketPurchase");
 		
 	}
-	
 	
 	public void onMarketPurchaseCancelled(PurchasableVirtualItem pvi) {
 		// pvi - the PurchasableVirtualItem whose purchase operation was cancelled
 		
 		//if (_loadingScreen)
-			//_loadingScreen.DestroyThisLoading ();
-
+		//_loadingScreen.DestroyThisLoading ();
+		
 		CheckButtons ();
-	
+		
 		Debug.Log ("onMarketPurchaseCancelled");
 		
 	}
@@ -189,8 +292,6 @@ public class PowliticosStore : MonoBehaviour {
 		// your game specific implementation here
 		Debug.Log ("onMarketPurchaseStarted");
 	}
-	
-	
 	
 	
 	public void onMarketRefund(PurchasableVirtualItem pvi) {
@@ -255,99 +356,5 @@ public class PowliticosStore : MonoBehaviour {
 	
 	
 	//*******************************************************************************************************************
-	
-
-	
-	
-	public void BuyChar (int type)
-	{
-		
-		//LoadLoading ();
-
-		SetAllButtonsInteractable (false);
-
-		if (Application.internetReachability != NetworkReachability.NotReachable) {
-			
-			try {
-				
-				switch (type) {
-				case (int)CharType.RANDOM:
-					SelectButton(CharType.RANDOM);
-
-					break;
-				case (int)CharType.JWYLLYS:
-					if (StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID) > 0){
-						//Select this char
-						SelectButton(CharType.JWYLLYS);
-
-					}else{
-						StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID);
-					}
-
-					break;
-				case (int)CharType.JBOLSONARO:
-					if (StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID) > 0){
-						//Select this char
-						SelectButton(CharType.JBOLSONARO);
-
-					}else{
-						StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID);
-					}
-
-					break;
-				default:
-					break;
-					
-				}
-			} catch (Exception e) {
-				
-				//_loadingScreen.DestroyThisLoading();
-				Debug.Log ("unity/soomla:" + e.Message);
-			}
-			
-		} else {
-			
-//			StartCoroutine(LoadAlert(
-//				"Internet Conection",
-//				"You aren't connect to the internet! To access this content try to Reconnect.",
-//				"Reconnect",
-//				amount,
-//				PowerUP.NONE,
-//				RewardType.NONE,
-//				0,
-//				LayoutType.INFO
-//				));
-//			
-//			_loadingScreen.DestroyThisLoading();
-			
-		}
-	}
-	
-
-	private void SetAllButtonsInteractable (bool interactable)
-	{
-		
-		foreach (BuyCharButton button in buttons) {
-			button.SetInteractable(interactable);
-		}
-	}
-	
-
-	
-//	
-//	///Load do Loading
-//	private void LoadLoading()
-//	{
-//		
-//		GameObject req = Resources.Load<GameObject> ("prefabs/Outros/Canvas_Loading");
-//		
-//		GameObject go = Instantiate (req as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
-//		
-//		_loadingScreen = go.GetComponent<Loading> ();
-//		
-//		_loadingScreen.UpdateInfoText ();
-//		
-//	}
-
 
 }
