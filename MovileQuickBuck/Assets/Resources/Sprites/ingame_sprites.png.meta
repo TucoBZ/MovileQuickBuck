@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 1d470ff528e40428c8d623d97e6efbf6
+timeCreated: 1446328923
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ingame_sprites_0
+    21300002: ingame_sprites_1
+    21300004: ingame_sprites_2
+    21300006: ingame_sprites_3
+    21300008: ingame_sprites_4
+    21300010: ingame_sprites_5
+    21300012: ingame_sprites_6
+    21300014: ingame_sprites_7
+    21300016: ingame_sprites_8
+    21300018: ingame_sprites_9
+    21300020: ingame_sprites_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    sprites:
+    - name: ingame_sprites_0
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1764
+        width: 167
+        height: 81
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ingame_sprites_1
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1740
+        width: 134
+        height: 129
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ingame_sprites_2
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 443
+        width: 829
+        height: 1473
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ingame_sprites_3
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1522
+        width: 539
+        height: 132
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ingame_sprites_5
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 1501
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ingame_sprites_6
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 1503
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ingame_sprites_7
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1503
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ingame_sprites_8
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 1306
+        width: 663
+        height: 106
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ingame_sprites_9
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 1149
+        width: 166
+        height: 105
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ingame_sprites_10
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 486
+        width: 540
+        height: 538
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
