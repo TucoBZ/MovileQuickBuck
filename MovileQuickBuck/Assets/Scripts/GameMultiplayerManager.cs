@@ -23,6 +23,10 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	//Se os player já deram ok para começar
 	private bool _playerUpReady = false;
 	private bool _playerDownReady = false;
+
+	//Se o player clicou antes do tempo
+	private bool _playerUpError = false;
+	private bool _playerDownError = false;
 	
 	private GestureDetectureBang _gestureBang;
 	
@@ -47,6 +51,14 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	}
 	
 	public void OnTouchPlayerUp(){
+
+		if (_playerUpError)
+			return;
+		
+		if (_gameState == GameState.Ready) {
+			_playerUpError = true;
+			return;
+		}
 		
 		if (_gameState != GameState.OnGame)
 			return;
@@ -65,6 +77,14 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	}
 	
 	public void OnTouchPlayerDown(){
+
+		if (_playerDownError)
+			return;
+		
+		if (_gameState == GameState.Ready) {
+			_playerDownError = true;
+			return;
+		}
 		
 		if (_gameState != GameState.OnGame)
 			return;
@@ -149,6 +169,9 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 		case GameState.Ready:
 
+			_playerUpError = false;
+			_playerDownError = false;
+
 			StartCoroutine("GameReady");
 
 			break;
@@ -195,7 +218,17 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	
 		_textCenter.text = "POW!";
 
-		ChangeStateTo (GameState.OnGame);
+		if (_playerUpError && _playerDownError) {
+
+			_textCenter.text = "Os dois erraram!";
+
+			ChangeStateTo (GameState.WinnerTime);
+
+		} else {
+
+			ChangeStateTo (GameState.OnGame);
+
+		}
 
 	}
 
