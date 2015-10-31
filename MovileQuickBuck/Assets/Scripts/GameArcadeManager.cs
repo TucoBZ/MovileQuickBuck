@@ -122,7 +122,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			
 			_textCenter.gameObject.SetActive(false);
 			
-			_textButtonDown.text = "Preparado?";
+			_textButtonDown.text = "Começar";
 			
 			_playerDownButton.gameObject.SetActive(true);
 			
@@ -158,7 +158,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	IEnumerator GameReady(){
 		
 		_textCenter.gameObject.SetActive (true);
-		_textCenter.text = "Preparar!";
+		_textCenter.text = "Preparar";
 		
 		yield return new WaitForSeconds (1f);
 		
