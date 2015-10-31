@@ -171,6 +171,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &207947282 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11463150, guid: 2979bfb687c5d43409f83438ee8378ef,
+    type: 2}
+  m_PrefabInternal: {fileID: 408945858}
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &376197267 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11403210, guid: 2979bfb687c5d43409f83438ee8378ef,
+    type: 2}
+  m_PrefabInternal: {fileID: 408945858}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &408945858
 Prefab:
   m_ObjectHideFlags: 0
@@ -254,6 +266,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 909650135}
+    - target: {fileID: 11463150, guid: 2979bfb687c5d43409f83438ee8378ef, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: clickButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2979bfb687c5d43409f83438ee8378ef, type: 2}
   m_IsPrefabParent: 0
@@ -263,6 +279,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1302291094}
   m_Script: {fileID: 11500000, guid: f7634c3c276be4ae589cc8a67f15d0ce, type: 3}
+--- !u!114 &1036791948 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11420118, guid: 2979bfb687c5d43409f83438ee8378ef,
+    type: 2}
+  m_PrefabInternal: {fileID: 408945858}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &1302291094
 Prefab:
   m_ObjectHideFlags: 0
@@ -302,6 +324,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11483090, guid: 316d2b774d1b949a59836e0af5fbaf5b, type: 2}
+      propertyPath: _playerDownButton
+      value: 
+      objectReference: {fileID: 207947282}
+    - target: {fileID: 11483090, guid: 316d2b774d1b949a59836e0af5fbaf5b, type: 2}
+      propertyPath: _textButtonDown
+      value: 
+      objectReference: {fileID: 1036791948}
+    - target: {fileID: 11483090, guid: 316d2b774d1b949a59836e0af5fbaf5b, type: 2}
+      propertyPath: _textCenter
+      value: 
+      objectReference: {fileID: 376197267}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 316d2b774d1b949a59836e0af5fbaf5b, type: 2}
   m_IsPrefabParent: 0
