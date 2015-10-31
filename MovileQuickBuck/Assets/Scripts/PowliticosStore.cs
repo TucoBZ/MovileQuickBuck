@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Soomla.Store;
 using System;
 
-public enum CharType {JWYLLYS, JBOLSONARO}
+public enum CharType {RANDOM, JWYLLYS, JBOLSONARO}
 
 public class PowliticosStore : MonoBehaviour {
 	
@@ -58,13 +58,27 @@ public class PowliticosStore : MonoBehaviour {
 		//AudioManager.GetInstance ().PlayMusicWithPriority2 (_mainMusic, 0.3f);
 		
 	}
+	private void SelectButton(CharType type){
+
+		CheckButtons ();
+
+		foreach (BuyCharButton bt in buttons) {
+			if (bt.buttonType == type){
+				bt.selectButton();
+			}
+		}
+	}
 
 	private void CheckButtons(){
-
+			
 		foreach(BuyCharButton bt in buttons){
 			int balance;
 
 			switch (bt.buttonType) {
+			case CharType.RANDOM:
+				bt.checkAble(1);
+
+				break;
 			case CharType.JWYLLYS:
 				balance = StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID);
 				bt.checkAble(balance);
@@ -76,6 +90,7 @@ public class PowliticosStore : MonoBehaviour {
 
 				break;
 			default:
+
 				break;
 				
 			}
@@ -91,6 +106,7 @@ public class PowliticosStore : MonoBehaviour {
 
 
 		CheckButtons ();
+		BuyChar (0);
 		//Verifico os valores atuais do banco
 		//amountOfPearlText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.CURRENCY1_ID);
 		//amountOfCoinsText.text = "" + StoreInventory.GetItemBalance (CrossSeaStoreAssets.CURRENCY2_ID);
@@ -255,11 +271,29 @@ public class PowliticosStore : MonoBehaviour {
 			try {
 				
 				switch (type) {
+				case (int)CharType.RANDOM:
+					SelectButton(CharType.RANDOM);
+
+					break;
 				case (int)CharType.JWYLLYS:
-					StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID);
+					if (StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID) > 0){
+						//Select this char
+						SelectButton(CharType.JWYLLYS);
+
+					}else{
+						StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID);
+					}
+
 					break;
 				case (int)CharType.JBOLSONARO:
-					StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID);
+					if (StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID) > 0){
+						//Select this char
+						SelectButton(CharType.JBOLSONARO);
+
+					}else{
+						StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID);
+					}
+
 					break;
 				default:
 					break;

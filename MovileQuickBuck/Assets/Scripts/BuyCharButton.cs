@@ -27,4 +27,10 @@ public class BuyCharButton : MonoBehaviour {
 		buttonImage = this.GetComponent<Image>();
 	}
 
+	public void selectButton(){
+
+		buttonImage.color = Color.green;
+
+	}
+	
 }

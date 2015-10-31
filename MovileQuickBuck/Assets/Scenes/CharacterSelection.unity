@@ -96,8 +96,9 @@ GameObject:
   - 222: {fileID: 79508206}
   - 114: {fileID: 79508205}
   - 114: {fileID: 79508204}
+  - 114: {fileID: 79508207}
   m_Layer: 5
-  m_Name: CharSelect (1)
+  m_Name: RandomBT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +119,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .521551669, y: .443695426}
   m_AnchorMax: {x: .706896603, y: .548390925}
-  m_AnchoredPosition: {x: -.332008362, y: .350006104}
+  m_AnchoredPosition: {x: 0, y: .968010008}
   m_SizeDelta: {x: -.5, y: -.700004578}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &79508204
@@ -159,7 +160,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 79508205}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2101560241}
+        m_MethodName: BuyChar
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &79508205
@@ -195,6 +207,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 79508202}
+--- !u!114 &79508207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 79508202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ca14100beb946a69cfb790aaf39727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonType: 0
 --- !u!1 &128698224
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +432,7 @@ GameObject:
   - 114: {fileID: 303224751}
   - 114: {fileID: 303224754}
   m_Layer: 5
-  m_Name: CharSelect
+  m_Name: BolsonaroBT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -470,7 +494,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 303224752}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2101560241}
+        m_MethodName: BuyChar
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &303224752
@@ -492,7 +527,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -517,7 +552,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ca14100beb946a69cfb790aaf39727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 1
+  buttonType: 2
+--- !u!1 &323869103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 323869104}
+  m_Layer: 0
+  m_Name: StaticGameControl
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &323869104
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 323869103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 54.614048, y: 181.300003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &333785931
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +666,7 @@ GameObject:
   - 114: {fileID: 346461536}
   - 114: {fileID: 346461535}
   m_Layer: 5
-  m_Name: CharSelect (2)
+  m_Name: VS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,10 +685,10 @@ RectTransform:
   - {fileID: 997807301}
   m_Father: {fileID: 2101560237}
   m_RootOrder: 3
-  m_AnchorMin: {x: .706896603, y: .443695426}
-  m_AnchorMax: {x: .892310441, y: .548390925}
-  m_AnchoredPosition: {x: -.25, y: 0}
-  m_SizeDelta: {x: -.5, y: -.700004578}
+  m_AnchorMin: {x: .409689695, y: .756000042}
+  m_AnchorMax: {x: .59479326, y: .861304581}
+  m_AnchoredPosition: {x: -.508003235, y: .5}
+  m_SizeDelta: {x: -.5, y: -.700012207}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &346461535
 MonoBehaviour:
@@ -792,7 +854,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bolsonaro
+  m_Text: VS
 --- !u!222 &997807300
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -881,7 +943,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bolsonaro
+  m_Text: '?'
 --- !u!222 &1138961316
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -901,7 +963,7 @@ GameObject:
   - 114: {fileID: 1404343052}
   - 114: {fileID: 1404343056}
   m_Layer: 5
-  m_Name: CharSelect
+  m_Name: JWyllysBT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -946,13 +1008,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2101560236}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2101560241}
+        m_MethodName: BuyChar
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -978,7 +1040,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1021,7 +1083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ca14100beb946a69cfb790aaf39727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 0
+  buttonType: 1
 --- !u!1 &1941159792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,4 +1261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a4f24061a79498f80a9ad595af6626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons: []
+  buttons:
+  - {fileID: 303224754}
+  - {fileID: 1404343056}
+  - {fileID: 79508207}

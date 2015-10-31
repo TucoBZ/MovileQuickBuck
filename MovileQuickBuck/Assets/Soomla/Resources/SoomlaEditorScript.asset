@@ -25,3 +25,5 @@ MonoBehaviour:
       value: True
     - name: AndroidPublicKey
       value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo2N7iCGHz4kIgNwk+Wj/id6LAimvLkLPySkkCx86d3IM6qc1ibYl2xlmHIF8uN7dOTvAM3B17v0EFaxB+pQ+vZg35J3NJKqvkJcj2Kvnhmdpb5548bNMNh0JTYtTaLYRWsIm6tpZMmmk1r+NXHCOsZI5PHs1wZxL/4KsNqCvNOiMqQURf2w46hjefEefkn9JQ4RhzVVpt5GMezQwVx9+BSGwcMNmy7c7s+yofdaYkLzmRC9BwrzvHW9eCfxmyFTGyk+nxOwti1v7TQ6XLBSERw9TjCwez45CZRbRBs3NOLd92okbPnSmd30hdJBh+AJggz5TT3xWuVpNs9GkrIN2owIDAQAB
+    - name: DebugMessages
+      value: True
