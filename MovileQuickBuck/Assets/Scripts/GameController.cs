@@ -15,10 +15,32 @@ public class GameController : MonoBehaviour {
 	public Text player1Name;
 	public Text player2Name;
 
+	public Powlitico pow1;
+	public Powlitico pow2;
+
 	public Button versusBT;
 
 	private GameSelection selectStatus = GameSelection.P1_CONFIRM;
 
+	///Instancia do Singleton
+	private static GameController sharedInstance;
+
+	void Awake (){
+		
+		///Inicialização do Singleton
+		if (sharedInstance == null) {
+			
+			sharedInstance = this;
+			DontDestroyOnLoad (this);
+			
+		} else {
+			Destroy(gameObject);
+		}
+	}
+
+	public GameController GetInstance (){
+		return sharedInstance;
+	}
 
 	/// <summary>
 	/// Changes the player selection.
@@ -33,15 +55,31 @@ public class GameController : MonoBehaviour {
 
 		SetName();
 
-		versusBT.interactable = false;
+
+		if (versusBT != null) {
+			versusBT.interactable = false;
+		}
 
 		selectStatus = GameSelection.P1_CONFIRM;
 	}
 
+	public void SetPowlitico(){
+		
+		if ((pow1 != null) && (pow2 != null)) {
+			pow1.SetPowliticoWithType(player1);
+			pow2.SetPowliticoWithType(player2);
+		}
+		
+	}
+
 	public void SetName(){
 	
-		player1Name.text = CharName(player1);
-		player2Name.text = CharName(player2);
+		if ((player1Name != null) && (player2Name != null)) {
+			player1Name.text = CharName(player1);
+			player2Name.text = CharName(player2);
+		}
+		SetPowlitico();
+
 	}
 
 	public void changePlayerSelection(CharType type){
