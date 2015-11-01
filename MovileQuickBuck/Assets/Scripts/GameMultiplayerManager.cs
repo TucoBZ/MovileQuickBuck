@@ -21,7 +21,15 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 	//Texto do centro
 	public Text _textCenter;
-	
+	public Text _p1NameUp;
+	public Text _p2NameUp;
+	public Text _p1NameDown;
+	public Text _p2NameDown;
+
+	//Personagens
+	public Powlitico pow1;
+	public Powlitico pow2;
+
 	//Se os players já tocaram na tela
 	private bool _playerUpTouched = false;
 	private bool _playerDownTouched = false;
@@ -53,10 +61,27 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	public GameObject powImage;
 
 	public GameObject pausePainel;
+	private GameController controller;
 
 	// Use this for initialization
 	void Start () {
+
+		GameObject gmControl = GameObject.FindGameObjectWithTag ("GameController");
 		
+		if (gmControl != null) {
+			controller = gmControl.GetComponent<GameController>();
+			controller.player1Name = _p1NameUp;
+			controller.player2Name = _p2NameUp;
+			controller.pow1 = pow1;
+			controller.pow2 = pow2;
+			//controller.versusBT = versusBT;
+			controller.ResetGame ();
+			controller.player1Name = _p1NameDown;
+			controller.player2Name = _p2NameDown;
+
+		}
+
+
 		_gestureBang = GestureDetectureBang.GetSharedGestureDetector();
 		
 		_gestureBang.AddListener (this);

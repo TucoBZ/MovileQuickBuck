@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 496016}
   - 114: {fileID: 11472650}
+  - 114: {fileID: 11479264}
   m_Layer: 0
   m_Name: GameMultiplayerManager
   m_TagString: Untagged
@@ -39,6 +40,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715688b9913b94bd1a55d5ca979b2853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11479264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9f6e1e0810244f3909b71efb555232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _painelUp: {fileID: 0}
+  _painelDown: {fileID: 0}
+  _playerUpButton: {fileID: 0}
+  _playerDownButton: {fileID: 0}
+  _textButtonUp: {fileID: 0}
+  _textButtonDown: {fileID: 0}
+  _textCenter: {fileID: 0}
+  _p1NameUp: {fileID: 0}
+  _p2NameUp: {fileID: 0}
+  _p1NameDown: {fileID: 0}
+  _p2NameDown: {fileID: 0}
+  pow1: {fileID: 0}
+  pow2: {fileID: 0}
+  _scoreUpPlayerUp:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _scoreUpPlayerDown:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _scoreDownPlayerUp:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _scoreDownPlayerDown:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  pointBlue: {fileID: 21300014, guid: 1d470ff528e40428c8d623d97e6efbf6, type: 3}
+  pointWhite: {fileID: 21300012, guid: 1d470ff528e40428c8d623d97e6efbf6, type: 3}
+  powImage: {fileID: 0}
+  pausePainel: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

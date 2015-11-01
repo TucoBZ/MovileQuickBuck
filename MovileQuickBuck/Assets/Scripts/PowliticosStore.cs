@@ -183,6 +183,21 @@ public class PowliticosStore : MonoBehaviour {
 		Application.LoadLevel(0);
 
 	}
+
+	public void StartVS(){
+
+		if (controller != null) {
+			if(controller.isInArcadeMode()){
+				Application.LoadLevel(3);
+			}else{
+				Application.LoadLevel(2);
+			}
+
+		}
+
+		
+	}
+
 	
 	public void BuyChar (int type)
 	{

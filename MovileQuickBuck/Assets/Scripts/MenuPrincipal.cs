@@ -27,6 +27,6 @@ public class MenuPrincipal : MonoBehaviour {
 	}
 
 	public void Creditos(){
-		Application.LoadLevel(3);
+		Application.LoadLevel(4);
 	}
 }
