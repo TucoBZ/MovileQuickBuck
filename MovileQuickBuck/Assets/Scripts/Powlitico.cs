@@ -64,13 +64,15 @@ public class Powlitico : MonoBehaviour {
 
 	private void AbleImages(bool able){
 		if (able) {
-			Color color = Color.white;
-			color.a = 0;
-			RandomImg.color = color;
+//			Color color = Color.white;
+//			color.a = 0;
+//			RandomImg.color = color;
+			RandomImg.enabled = false;
 		} else {
-			Color color = Color.white;
-			color.a = 1;
-			RandomImg.color = color;
+//			Color color = Color.white;
+//			color.a = 1;
+//			RandomImg.color = color;
+			RandomImg.enabled = true;
 		}
 
 		Head.gameObject.SetActive(able);
