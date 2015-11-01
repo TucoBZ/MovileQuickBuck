@@ -55,7 +55,6 @@ public class GameController : MonoBehaviour {
 
 		SetName();
 
-
 		if (versusBT != null) {
 			versusBT.interactable = false;
 		}

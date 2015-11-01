@@ -14,6 +14,7 @@ public class Powlitico : MonoBehaviour {
 	public Image HandD;
 	public Image HandE;
 
+	public Image RandomImg;
 
 	public void SetPowliticoWithType(CharType type){
 		Sprite[] sprites = null;
@@ -43,6 +44,18 @@ public class Powlitico : MonoBehaviour {
 			HandE.sprite = sprites[7];
 			AbleImages(true);
 			break;
+
+		case CharType.DILMA:
+			sprites = Resources.LoadAll<Sprite>("Sprites/sprite_dilma");
+			Head.sprite = sprites[0];
+			Body.sprite = sprites[2];
+			FootD.sprite = sprites[4];
+			FootE.sprite = sprites[5];
+			HandD.sprite = sprites[1];
+			HandE.sprite = sprites[3];
+			AbleImages(true);
+
+			break;
 		default:
 			break;
 			
@@ -50,6 +63,16 @@ public class Powlitico : MonoBehaviour {
 	}
 
 	private void AbleImages(bool able){
+		if (able) {
+			Color color = Color.white;
+			color.a = 0;
+			RandomImg.color = color;
+		} else {
+			Color color = Color.white;
+			color.a = 1;
+			RandomImg.color = color;
+		}
+
 		Head.gameObject.SetActive(able);
 		Body.gameObject.SetActive(able);
 		FootD.gameObject.SetActive(able);

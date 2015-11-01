@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 827e9686d1e5b41a7ad20a0c7940df98
-timeCreated: 1446351241
+guid: e0f8163c535064d91818bd704321035d
+timeCreated: 1446349534
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: jean_wyllys_0
-    21300002: jean_wyllys_1
-    21300004: jean_wyllys_2
-    21300006: jean_wyllys_3
-    21300008: jean_wyllys_4
-    21300010: jean_wyllys_5
+    21300000: heads_0
+    21300002: heads_1
+    21300004: heads_2
+    21300006: heads_3
+    21300008: heads_4
+    21300010: heads_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,63 +56,63 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: jean_wyllys_0
+    - name: heads_0
       rect:
         serializedVersion: 2
-        x: 394
-        y: 564
-        width: 236
-        height: 222
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jean_wyllys_1
-      rect:
-        serializedVersion: 2
-        x: 328
-        y: 358
-        width: 75
-        height: 126
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jean_wyllys_2
-      rect:
-        serializedVersion: 2
-        x: 455
-        y: 380
+        x: 63
+        y: 453
         width: 113
-        height: 107
+        height: 118
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jean_wyllys_3
+    - name: heads_1
       rect:
         serializedVersion: 2
-        x: 612
-        y: 358
-        width: 76
-        height: 126
+        x: 213
+        y: 452
+        width: 111
+        height: 120
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jean_wyllys_4
+    - name: heads_2
       rect:
         serializedVersion: 2
-        x: 431
-        y: 272
-        width: 49
-        height: 71
+        x: 353
+        y: 450
+        width: 131
+        height: 123
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jean_wyllys_5
+    - name: heads_3
       rect:
         serializedVersion: 2
-        x: 540
-        y: 274
-        width: 50
-        height: 69
+        x: 526
+        y: 450
+        width: 131
+        height: 123
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: heads_4
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 444
+        width: 107
+        height: 133
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: heads_5
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 444
+        width: 107
+        height: 133
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -6,7 +6,7 @@ using Soomla.Store;
 public class PowliticosStoreAssets : IStoreAssets {                                                                           
 
 	public int GetVersion() {                                                                                                           
-		return 1;
+		return 2;
 	}
 	
 	public VirtualCurrency[] GetCurrencies() {                                                                              
@@ -14,7 +14,7 @@ public class PowliticosStoreAssets : IStoreAssets {
 	}
 	
 	public VirtualGood[] GetGoods() {                                                                                               
-		return new VirtualGood[]{CHAR_JEAN_WYLLYS_PRODUCT_ID, CHAR_JAIR_BOLSONARO_PRODUCT_ID};
+		return new VirtualGood[]{CHAR_JEAN_WYLLYS_PRODUCT_ID, CHAR_JAIR_BOLSONARO_PRODUCT_ID, CHAR_DILMA_PRODUCT_ID};
 	}
 	
 	public VirtualCurrencyPack[] GetCurrencyPacks() {                                                        
@@ -28,7 +28,7 @@ public class PowliticosStoreAssets : IStoreAssets {
 	///itunesconnect`s ids
 	public const string CHAR_JEAN_WYLLYS_ID	= "char_jwyllys";
 	public const string CHAR_JAIR_BOLSONARO_ID	= "char_jbolsonaro";
-	
+	public const string CHAR_DILMA_ID	= "char_dilma";
 
 	///VIRTUAL GOODS
 
@@ -46,6 +46,12 @@ public class PowliticosStoreAssets : IStoreAssets {
 		"Desbloquei Jair Bolsonaro",				 							// description
 		CHAR_JAIR_BOLSONARO_ID,												// item id
 		new PurchaseWithMarket(CHAR_JAIR_BOLSONARO_ID, 0.99));	// the way this virtual good is purchased
+
+	public static VirtualGood CHAR_DILMA_PRODUCT_ID = new LifetimeVG(
+		"Dilma", 														// name
+		"Desbloquei Dilma",				 							// description
+		CHAR_DILMA_ID,												// item id
+		new PurchaseWithMarket(CHAR_DILMA_ID, 0.99));	// the way this virtual good is purchased
 
 }	
 

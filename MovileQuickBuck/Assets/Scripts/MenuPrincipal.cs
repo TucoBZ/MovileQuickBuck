@@ -25,4 +25,8 @@ public class MenuPrincipal : MonoBehaviour {
 		controller.mode = GameMode.MULTIPLAYER;
 		Application.LoadLevel(1);
 	}
+
+	public void Creditos(){
+		Application.LoadLevel(3);
+	}
 }
