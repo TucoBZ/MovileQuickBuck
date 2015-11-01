@@ -63,6 +63,8 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	public GameObject pausePainel;
 	private GameController controller;
 
+	public GameObject tortaGameobject;
+
 	// Use this for initialization
 	void Start () {
 
@@ -113,8 +115,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			_playerUpTouched = true;
 			
 			if(_playerDownTouched == false) {
-				UpPlayerWinner();
-				
+				StartCoroutine("UpPlayerWinner");
 			}
 		}
 		
@@ -138,8 +139,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			_playerDownTouched = true;
 			
 			if(_playerUpTouched == false) {
-				DownPlayerWinner();
-				
+				StartCoroutine("DownPlayerWinner");
 			}
 		}
 	}
@@ -347,11 +347,9 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 		
 	}
 
-	private void UpPlayerWinner(){
+	private IEnumerator UpPlayerWinner(){
 
-		_textCenter.text = "PlayerUp"; 
 		pow2.gameObject.GetComponent<Animator>().SetTrigger("Pie");
-
 
 		Image myImage = _scoreDownPlayerUp [_upPoints].GetComponent<Image> ();
 		myImage.sprite = pointBlue;
@@ -361,13 +359,14 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 		_upPoints++;
 
+		yield return new WaitForSeconds (2f);
+
 		ChangeStateTo(GameState.WinnerTime);
 
 	}
 
-	private void DownPlayerWinner(){
-		
-		_textCenter.text = "PlayerDown"; 
+	private IEnumerator DownPlayerWinner(){
+
 		pow1.gameObject.GetComponent<Animator>().SetTrigger("Pie");
 
 		Image myImage = _scoreDownPlayerDown [_downPoints].GetComponent<Image> ();
@@ -377,7 +376,9 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 		myImage.sprite = pointBlue;
 		
 		_downPoints++;
-		
+
+		yield return new WaitForSeconds (2f);
+
 		ChangeStateTo(GameState.WinnerTime);
 		
 	}
@@ -445,8 +446,13 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 		Application.LoadLevel (0);
 	}
-	
 
+	private void UpHitPie(){
+		pow2.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+	}
 
+	private void DownHitPie(){
+		pow2.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+	}
 }
 
