@@ -3,7 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+
 public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
+
+
+	//Paineis com os menus
+	public GameObject _painelUp;
+	public GameObject _painelDown;
+
+	private Vector3 _menuUpPosition;
+	private Vector3 _menuDownPosition;
 
 	//Botões dos respectivos players
 	public Button _playerUpButton;
@@ -29,11 +38,25 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	private bool _playerDownError = false;
 	
 	private GestureDetectureBang _gestureBang;
-	
-	
+
 	private GameState _gameState; 
-	
-	
+
+	public GameObject[] _scoreUpPlayerUp;
+	public GameObject[] _scoreUpPlayerDown;
+	public GameObject[] _scoreDownPlayerUp;
+	public GameObject[] _scoreDownPlayerDown;
+
+	public Sprite pointBlue;
+	public Sprite pointWhite;
+
+	//Pontos dos Players
+	private int _upPoints = 0;
+	private int _downPoints = 0;
+
+	public GameObject powImage;
+
+	public GameObject pausePainel;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -42,7 +65,10 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 		_gestureBang.AddListener (this);
 		
 		ChangeStateTo (GameState.Default);
-		
+
+		_menuUpPosition = _painelUp.transform.position;
+		_menuDownPosition = _painelDown.transform.position;
+
 	}
 	
 	// Update is called once per frame
@@ -68,8 +94,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			_playerUpTouched = true;
 			
 			if(_playerDownTouched == false) {
-				_textCenter.text = "PlayerUp"; 
-				ChangeStateTo(GameState.WinnerTime);
+				UpPlayerWinner();
 				
 			}
 		}
@@ -94,8 +119,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			_playerDownTouched = true;
 			
 			if(_playerUpTouched == false) {
-				_textCenter.text = "PlayerDown"; 
-				ChangeStateTo(GameState.WinnerTime);
+				DownPlayerWinner();
 				
 			}
 		}
@@ -122,14 +146,17 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 		
 		if (_gameState != GameState.Default)
 			return;
-		
+
+
+
 		if (isPlayerUp) {
 
+			HideUpMenu();
 			_playerUpButton.gameObject.SetActive(false);
 			_playerUpReady = true;
 			
 		} else {
-
+			HideDownMenu();
 			_playerDownButton.gameObject.SetActive(false);
 			_playerDownReady = true;
 			
@@ -162,6 +189,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			_playerUpButton.gameObject.SetActive(true);
 			_playerDownButton.gameObject.SetActive(true);
 
+
 			_playerUpReady = false;
 			_playerDownReady = false;
 			
@@ -177,23 +205,44 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			break;
 		case GameState.OnGame:
 
-
 			_playerUpTouched = false;
 			_playerDownTouched = false;
 			
 			break;
 		case GameState.WinnerTime:
 
-			_textButtonDown.text = "Jogar de novo?";
-			_playerDownButton.gameObject.SetActive(true);
-
+			CheckWinner();
+		
 			break;
 			
 			
 		}
 		
 	}
-	
+
+	private void CheckWinner(){
+
+		if (_upPoints == 3) {
+
+			Debug.Log ("Player UP WINNER");
+
+		} else if (_downPoints == 3) {
+
+			Debug.Log ("Player DOWN WINNER");
+
+		} else {
+
+			ShowUpMenu();
+			ShowDownMenu();
+			
+			_textButtonDown.text = "Jogar de novo?";
+			_playerDownButton.gameObject.SetActive(true);
+		}
+
+
+
+	}
+
 	//Co-routine do Game
 	IEnumerator GameReady(){
 
@@ -218,7 +267,14 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	
 		_textCenter.text = "POW!";
 
+		powImage.SetActive (true);
+		_textCenter.color = Color.white;
+
+
 		if (_playerUpError && _playerDownError) {
+
+			powImage.SetActive (false);
+			_textCenter.color = Color.black;
 
 			_textCenter.text = "Os dois erraram!";
 
@@ -228,9 +284,147 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 			ChangeStateTo (GameState.OnGame);
 
+			yield return new WaitForSeconds (1.5f);
+			
+			powImage.SetActive (false);
+			_textCenter.color = Color.black;
+			_textCenter.gameObject.SetActive (false);
+
+		}
+
+
+
+
+	}
+
+	private void ShowUpMenu(){
+
+		//_painelUp.transform.position = Vector3.Lerp (_painelUp.transform.position, _menuUpPosition, 100);
+		_painelUp.gameObject.SetActive (true);
+	}
+
+	private void HideUpMenu(){
+
+//		Vector3 newPosition = new Vector3 (_menuUpPosition.x, _menuUpPosition.y + 200,  _menuUpPosition.z);
+//		_painelUp.transform.position = Vector3.Lerp (_painelUp.transform.position, newPosition, 100);
+		_painelUp.gameObject.SetActive (false);
+
+		
+	}
+
+	private void ShowDownMenu(){
+		
+//		_painelDown.transform.position = Vector3.Lerp (_painelDown.transform.position, _menuDownPosition, 100);
+		_painelDown.gameObject.SetActive (true);
+
+	}
+	
+	private void HideDownMenu(){
+		
+//		Vector3 newPosition = new Vector3 (_menuDownPosition.x, _menuDownPosition.y - 200,  _menuUpPosition.z);
+//		_painelDown.transform.position = Vector3.Lerp (_painelDown.transform.position, newPosition, 100);
+
+		_painelDown.gameObject.SetActive (false);
+		
+	}
+
+	private void UpPlayerWinner(){
+
+		_textCenter.text = "PlayerUp"; 
+
+		Image myImage = _scoreDownPlayerUp [_upPoints].GetComponent<Image> ();
+		myImage.sprite = pointBlue;
+
+		myImage = _scoreUpPlayerUp [_upPoints].GetComponent<Image> ();
+		myImage.sprite = pointBlue;
+
+		_upPoints++;
+
+		ChangeStateTo(GameState.WinnerTime);
+
+	}
+
+	private void DownPlayerWinner(){
+		
+		_textCenter.text = "PlayerDown"; 
+		
+		Image myImage = _scoreDownPlayerDown [_downPoints].GetComponent<Image> ();
+		myImage.sprite = pointBlue;
+		
+		myImage = _scoreUpPlayerDown [_downPoints].GetComponent<Image> ();
+		myImage.sprite = pointBlue;
+		
+		_downPoints++;
+		
+		ChangeStateTo(GameState.WinnerTime);
+		
+	}
+
+	private void ResetScore(){
+
+		_upPoints = 0;
+		_downPoints = 0;
+
+		foreach (GameObject pointImage in _scoreDownPlayerDown) {
+
+			Image imagePoint = pointImage.GetComponent<Image>();
+			imagePoint.sprite = pointWhite;
+
+		}
+
+		foreach (GameObject pointImage in _scoreDownPlayerUp) {
+			
+			Image imagePoint = pointImage.GetComponent<Image>();
+			imagePoint.sprite = pointWhite;
+			
+		}
+
+		foreach (GameObject pointImage in _scoreUpPlayerDown) {
+			
+			Image imagePoint = pointImage.GetComponent<Image>();
+			imagePoint.sprite = pointWhite;
+			
+		}
+
+		foreach (GameObject pointImage in _scoreUpPlayerUp) {
+			
+			Image imagePoint = pointImage.GetComponent<Image>();
+			imagePoint.sprite = pointWhite;
+			
 		}
 
 	}
+
+	public void PauseGame(){
+
+		pausePainel.SetActive (true);
+
+	}
+
+	public void ContinueGame(){
+
+		pausePainel.SetActive (false);
+
+	}
+
+	public void ResetGame(){
+		
+		pausePainel.SetActive (false);
+
+		_upPoints = 0;
+		_downPoints = 0;
+		ResetScore ();
+		ChangeStateTo (GameState.Default);
+
+		
+	}
+
+	public void MainMenu(){
+
+		Application.LoadLevel (0);
+	}
+	
+
 
 }
 
