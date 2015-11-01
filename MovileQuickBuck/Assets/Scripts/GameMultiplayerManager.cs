@@ -11,9 +11,6 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	public GameObject _painelUp;
 	public GameObject _painelDown;
 
-	private Vector3 _menuUpPosition;
-	private Vector3 _menuDownPosition;
-
 	//Botões dos respectivos players
 	public Button _playerUpButton;
 	public Button _playerDownButton;
@@ -65,9 +62,6 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 		_gestureBang.AddListener (this);
 		
 		ChangeStateTo (GameState.Default);
-
-		_menuUpPosition = _painelUp.transform.position;
-		_menuDownPosition = _painelDown.transform.position;
 
 	}
 	

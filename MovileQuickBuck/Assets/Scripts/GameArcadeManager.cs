@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public enum GameState{ Default, Ready, OnGame, WinnerTime};
 
 public class GameArcadeManager : MonoBehaviour, TouchObserver {
-	
+
+	//Paineis com os menus
+	public GameObject _painelDown;
+
 	//Botões dos respectivos players
 	public Button _playerDownButton;
 	
@@ -30,10 +33,23 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	
 	private GestureDetectureBang _gestureBang;
 	
-	
+
+	public GameObject[] _scoreDownPlayerUp;
+	public GameObject[] _scoreDownPlayerDown;
+
 	private GameState _gameState; 
 	
+	public Sprite pointBlue;
+	public Sprite pointWhite;
+
+	//Pontos dos Players
+	private int _upPoints = 0;
+	private int _downPoints = 0;
 	
+	public GameObject powImage;
+	
+	public GameObject pausePainel;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -72,8 +88,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			_playerDownTouched = true;
 			
 			if(_compHitted == false) { ///Fazer escolha do Computador
-				_textCenter.text = "Você Ganhou!"; 
-				ChangeStateTo(GameState.WinnerTime);
+				DownPlayerWinner();
 				
 			}
 		}
@@ -101,6 +116,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		if (_gameState != GameState.Default)
 			return;
 
+		HideDownMenu ();
 		_playerDownButton.gameObject.SetActive (false);
 		ChangeStateTo (GameState.Ready);
 			
@@ -108,7 +124,6 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	
 	private void ResetRound (){
 
-		_playerDownButton.gameObject.SetActive (false);
 		ChangeStateTo (GameState.Default);
 		
 	}
@@ -144,13 +159,34 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			break;
 		case GameState.WinnerTime:
 			
-			_textButtonDown.text = "Jogar de novo?";
-			_playerDownButton.gameObject.SetActive(true);
+			CheckWinner();
 			
 			break;
 			
 			
 		}
+		
+	}
+	
+	private void CheckWinner(){
+		
+		if (_upPoints == 3) {
+			
+			Debug.Log ("Player UP WINNER");
+			
+		} else if (_downPoints == 3) {
+			
+			Debug.Log ("Player DOWN WINNER");
+			
+		} else {
+			
+			ShowDownMenu();
+			
+			_textButtonDown.text = "Jogar de novo?";
+			_playerDownButton.gameObject.SetActive(true);
+		}
+		
+		
 		
 	}
 	
@@ -175,6 +211,9 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		_textCenter.gameObject.SetActive (true);
 		
 		_textCenter.text = "POW!";
+
+		powImage.SetActive (true);
+		_textCenter.color = Color.white;
 		
 		ChangeStateTo (GameState.OnGame);
 
@@ -192,10 +231,109 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			return;
 
 		_compHitted = true;
-		_textCenter.text = "Você perdeu!"; 
-		ChangeStateTo (GameState.WinnerTime);
+		CompWinner ();
 
 	}
+
+
+	private void ShowDownMenu(){
+		
+		//		_painelDown.transform.position = Vector3.Lerp (_painelDown.transform.position, _menuDownPosition, 100);
+		_painelDown.gameObject.SetActive (true);
+		
+	}
 	
+	private void HideDownMenu(){
+		
+		//		Vector3 newPosition = new Vector3 (_menuDownPosition.x, _menuDownPosition.y - 200,  _menuUpPosition.z);
+		//		_painelDown.transform.position = Vector3.Lerp (_painelDown.transform.position, newPosition, 100);
+		
+		_painelDown.gameObject.SetActive (false);
+		
+	}
+
+	private void CompWinner(){
+
+		powImage.SetActive (false);
+		_textCenter.color = Color.black;
+		_textCenter.gameObject.SetActive (true);
+		_textCenter.text = "Você perdeu!"; 
+		
+		Image myImage = _scoreDownPlayerUp [_upPoints].GetComponent<Image> ();
+		myImage.sprite = pointBlue;
+		
+		_upPoints++;
+		
+		ChangeStateTo(GameState.WinnerTime);
+		
+	}
+	
+	private void DownPlayerWinner(){
+
+		powImage.SetActive (false);
+		_textCenter.color = Color.black;
+		_textCenter.gameObject.SetActive (true);
+		_textCenter.text = "Você ganhou!"; 
+		
+		Image myImage = _scoreDownPlayerDown [_downPoints].GetComponent<Image> ();
+		myImage.sprite = pointBlue;
+
+		
+		_downPoints++;
+		
+		ChangeStateTo(GameState.WinnerTime);
+		
+	}
+
+	private void ResetScore(){
+		
+		_upPoints = 0;
+		_downPoints = 0;
+		
+		foreach (GameObject pointImage in _scoreDownPlayerDown) {
+			
+			Image imagePoint = pointImage.GetComponent<Image>();
+			imagePoint.sprite = pointWhite;
+			
+		}
+		
+		foreach (GameObject pointImage in _scoreDownPlayerUp) {
+			
+			Image imagePoint = pointImage.GetComponent<Image>();
+			imagePoint.sprite = pointWhite;
+			
+		}
+
+		
+	}
+
+	public void PauseGame(){
+		
+		pausePainel.SetActive (true);
+		
+	}
+	
+	public void ContinueGame(){
+		
+		pausePainel.SetActive (false);
+		
+	}
+	
+	public void ResetGame(){
+		
+		pausePainel.SetActive (false);
+		
+		_upPoints = 0;
+		_downPoints = 0;
+		ResetScore ();
+		ChangeStateTo (GameState.Default);
+		
+		
+	}
+	
+	public void MainMenu(){
+		
+		Application.LoadLevel (0);
+	}
 }
 
