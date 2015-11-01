@@ -109,7 +109,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			_playerDownTouched = true;
 			
 			if(_compHitted == false) { ///Fazer escolha do Computador
-				DownPlayerWinner();
+				StartCoroutine("DownPlayerWinner");
 				
 			}
 		}
@@ -252,7 +252,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			return;
 
 		_compHitted = true;
-		CompWinner ();
+		StartCoroutine ("CompWinner"); 
 
 	}
 
@@ -273,7 +273,14 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		
 	}
 
-	private void CompWinner(){
+	private IEnumerator CompWinner(){
+
+
+		UpHitPie ();
+		
+		yield return new WaitForSeconds (0.7f);
+		
+		DownHettedHead ();
 
 		powImage.SetActive (false);
 		_textCenter.color = Color.black;
@@ -289,7 +296,13 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		
 	}
 	
-	private void DownPlayerWinner(){
+	private IEnumerator DownPlayerWinner(){
+
+		DownHitPie ();
+		
+		yield return new WaitForSeconds (0.7f);
+		
+		UpHettedHead ();
 
 		powImage.SetActive (false);
 		_textCenter.color = Color.black;
@@ -355,6 +368,22 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	public void MainMenu(){
 		
 		Application.LoadLevel (0);
+	}
+
+	private void UpHitPie(){
+		pow2.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+	}
+	
+	private void DownHitPie(){
+		pow1.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+	}
+	
+	private void UpHettedHead(){
+		pow2.gameObject.GetComponent<Animator>().SetTrigger("PieHead");
+	}
+	
+	private void DownHettedHead(){
+		pow1.gameObject.GetComponent<Animator>().SetTrigger("PieHead");
 	}
 }
 
