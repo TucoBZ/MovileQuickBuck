@@ -350,7 +350,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	private void UpPlayerWinner(){
 
 		_textCenter.text = "PlayerUp"; 
-		pow1.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+		pow2.gameObject.GetComponent<Animator>().SetTrigger("Pie");
 
 
 		Image myImage = _scoreDownPlayerUp [_upPoints].GetComponent<Image> ();
@@ -368,7 +368,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	private void DownPlayerWinner(){
 		
 		_textCenter.text = "PlayerDown"; 
-		pow2.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+		pow1.gameObject.GetComponent<Animator>().SetTrigger("Pie");
 
 		Image myImage = _scoreDownPlayerDown [_downPoints].GetComponent<Image> ();
 		myImage.sprite = pointBlue;
