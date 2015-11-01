@@ -110,9 +110,9 @@ public class GameController : MonoBehaviour {
 		if (player1 == CharType.RANDOM) {
 			player1 = RandomCharType();
 		}
-		if (player2 == CharType.RANDOM && player1 == player2) {
+		if (player2 == CharType.RANDOM) {
 			player2 = RandomCharType();
-			CheckRandom();	
+
 		}
 	}
 

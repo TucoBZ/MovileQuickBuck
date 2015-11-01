@@ -47,12 +47,33 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	private int _downPoints = 0;
 	
 	public GameObject powImage;
+
+	private GameController controller;
+
 	
 	public GameObject pausePainel;
+	
+	public Text _p1NameDown;
+	public Text _p2NameDown;
+	
+	//Personagens
+	public Powlitico pow1;
+	public Powlitico pow2;
 
 	// Use this for initialization
 	void Start () {
+
+		GameObject gmControl = GameObject.FindGameObjectWithTag ("GameController");
 		
+		if (gmControl != null) {
+			controller = gmControl.GetComponent<GameController> ();
+			controller.player1Name = _p1NameDown;
+			controller.player2Name = _p2NameDown;
+			controller.pow1 = pow1;
+			controller.pow2 = pow2;
+			controller.SetName ();
+		}
+
 		_gestureBang = GestureDetectureBang.GetSharedGestureDetector();
 		
 		_gestureBang.AddListener (this);

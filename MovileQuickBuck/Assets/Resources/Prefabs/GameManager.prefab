@@ -51,6 +51,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7634c3c276be4ae589cc8a67f15d0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _painelDown: {fileID: 0}
+  _playerDownButton: {fileID: 0}
+  _textButtonDown: {fileID: 0}
+  _textCenter: {fileID: 0}
+  _scoreDownPlayerUp:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _scoreDownPlayerDown:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  pointBlue: {fileID: 21300014, guid: 1d470ff528e40428c8d623d97e6efbf6, type: 3}
+  pointWhite: {fileID: 21300012, guid: 1d470ff528e40428c8d623d97e6efbf6, type: 3}
+  powImage: {fileID: 0}
+  pausePainel: {fileID: 0}
+  _p1NameDown: {fileID: 0}
+  _p2NameDown: {fileID: 0}
+  pow1: {fileID: 0}
+  pow2: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

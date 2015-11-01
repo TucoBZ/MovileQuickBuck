@@ -349,7 +349,11 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 	private IEnumerator UpPlayerWinner(){
 
-		pow2.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+		UpHitPie ();
+
+		yield return new WaitForSeconds (0.7f);
+
+		DownHettedHead ();
 
 		Image myImage = _scoreDownPlayerUp [_upPoints].GetComponent<Image> ();
 		myImage.sprite = pointBlue;
@@ -359,15 +363,17 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 		_upPoints++;
 
-		yield return new WaitForSeconds (2f);
-
 		ChangeStateTo(GameState.WinnerTime);
 
 	}
 
 	private IEnumerator DownPlayerWinner(){
 
-		pow1.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+		DownHitPie ();
+
+		yield return new WaitForSeconds (0.7f);
+
+		UpHettedHead ();
 
 		Image myImage = _scoreDownPlayerDown [_downPoints].GetComponent<Image> ();
 		myImage.sprite = pointBlue;
@@ -376,8 +382,6 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 		myImage.sprite = pointBlue;
 		
 		_downPoints++;
-
-		yield return new WaitForSeconds (2f);
 
 		ChangeStateTo(GameState.WinnerTime);
 		
@@ -452,7 +456,15 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	}
 
 	private void DownHitPie(){
-		pow2.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+		pow1.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+	}
+
+	private void UpHettedHead(){
+		pow2.gameObject.GetComponent<Animator>().SetTrigger("PieHead");
+	}
+	
+	private void DownHettedHead(){
+		pow1.gameObject.GetComponent<Animator>().SetTrigger("PieHead");
 	}
 }
 
