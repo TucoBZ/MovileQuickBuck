@@ -55,6 +55,8 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 	public GameObject powImage;
 
+	public GameObject pausePainel;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -358,7 +360,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 		
 	}
 
-	private void resetScore(){
+	private void ResetScore(){
 
 		_upPoints = 0;
 		_downPoints = 0;
@@ -391,6 +393,35 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			
 		}
 
+	}
+
+	public void PauseGame(){
+
+		pausePainel.SetActive (true);
+
+	}
+
+	public void ContinueGame(){
+
+		pausePainel.SetActive (false);
+
+	}
+
+	public void ResetGame(){
+		
+		pausePainel.SetActive (false);
+
+		_upPoints = 0;
+		_downPoints = 0;
+		ResetScore ();
+		ChangeStateTo (GameState.Default);
+
+		
+	}
+
+	public void MainMenu(){
+
+		Application.LoadLevel (0);
 	}
 	
 

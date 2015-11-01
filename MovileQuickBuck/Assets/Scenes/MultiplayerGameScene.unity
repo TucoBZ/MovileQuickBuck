@@ -181,6 +181,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1 &226941766 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 160868, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
+  m_PrefabInternal: {fileID: 297433795}
 --- !u!1001 &297433795
 Prefab:
   m_ObjectHideFlags: 0
@@ -260,6 +264,26 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11404898, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 529187874}
+    - target: {fileID: 11486930, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 529187874}
+    - target: {fileID: 11480104, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 529187874}
+    - target: {fileID: 11488232, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 529187874}
+    - target: {fileID: 11488066, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 529187874}
     - target: {fileID: 11439950, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -268,22 +292,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 529187874}
-    - target: {fileID: 187018, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11467474, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11467474, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11467474, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 149ceccfeeefa49f18b69587129a526f, type: 2}
   m_IsPrefabParent: 0
@@ -340,6 +348,7 @@ MonoBehaviour:
   pointBlue: {fileID: 21300014, guid: 1d470ff528e40428c8d623d97e6efbf6, type: 3}
   pointWhite: {fileID: 21300012, guid: 1d470ff528e40428c8d623d97e6efbf6, type: 3}
   powImage: {fileID: 1140641053}
+  pausePainel: {fileID: 226941766}
 --- !u!1 &541722196
 GameObject:
   m_ObjectHideFlags: 0
