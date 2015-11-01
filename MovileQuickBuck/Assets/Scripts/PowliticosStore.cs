@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Soomla.Store;
 using System;
 
-public enum CharType {RANDOM, JWYLLYS, JBOLSONARO}
+public enum CharType {RANDOM, JWYLLYS, JBOLSONARO, DILMA}
 
 public class PowliticosStore : MonoBehaviour {
 	
@@ -14,7 +14,7 @@ public class PowliticosStore : MonoBehaviour {
 	public Button undoBT;
 	public Button confirmBT;
 	public Button versusBT;
-
+	public Animator versusAnimator;
 	public Text p1Name;
 	public Text p2Name;
 	public Text gameMode;
@@ -57,7 +57,7 @@ public class PowliticosStore : MonoBehaviour {
 		StoreEvents.OnBillingNotSupported 			+= onBillingNotSupported;
 		
 
-		//PlayerPrefs.DeleteAll ();
+		//	PlayerPrefs.DeleteAll ();
 		//Ajuste do Controller
 		GameObject gmControl = GameObject.FindGameObjectWithTag ("GameController");
 
@@ -94,7 +94,12 @@ public class PowliticosStore : MonoBehaviour {
 		if (controller != null) {
 			if (controller.isReady ()) {
 				SetAllButtonsInteractable(false);
+				versusAnimator.SetBool("ready",true);
+			} else if (versusAnimator.GetBool("ready")){
+				versusAnimator.SetBool("ready",false);
 			}
+
+			
 		}
 	
 	}
@@ -135,6 +140,12 @@ public class PowliticosStore : MonoBehaviour {
 				balance = StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID);
 				bt.checkAble(balance);
 
+				break;
+
+			case CharType.DILMA:
+				balance = StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_DILMA_ID);
+				bt.checkAble(balance);
+				
 				break;
 			default:
 
@@ -207,6 +218,17 @@ public class PowliticosStore : MonoBehaviour {
 					}
 
 					break;
+				case (int)CharType.DILMA:
+					if (StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_DILMA_ID) > 0){
+						//Select this char
+						SelectButton(CharType.DILMA);
+						
+					}else{
+						//StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID);
+						LoadAlertPurchase(CharType.DILMA);
+					}
+					
+					break;
 				default:
 					break;
 					
@@ -237,6 +259,11 @@ public class PowliticosStore : MonoBehaviour {
 
 				StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID);
 
+				break;
+			case CharType.DILMA:
+				
+				StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_DILMA_ID);
+				
 				break;
 			default:
 				break;

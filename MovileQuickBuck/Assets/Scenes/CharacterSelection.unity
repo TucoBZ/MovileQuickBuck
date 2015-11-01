@@ -440,7 +440,7 @@ GameObject:
   - 114: {fileID: 209406081}
   - 114: {fileID: 209406080}
   m_Layer: 5
-  m_Name: JWyllysBT (1)
+  m_Name: DilmaBT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -474,9 +474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ca14100beb946a69cfb790aaf39727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 1
-  selectedImage: {fileID: 21300002, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
-  unselectedImage: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
+  buttonType: 3
+  selectedImage: {fileID: 21300008, guid: e0f8163c535064d91818bd704321035d, type: 3}
+  unselectedImage: {fileID: 21300010, guid: e0f8163c535064d91818bd704321035d, type: 3}
 --- !u!114 &209406081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,7 +522,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -665,9 +665,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1129646839}
   m_RootOrder: 4
-  m_AnchorMin: {x: .146620691, y: .120436668}
-  m_AnchorMax: {x: .327620685, y: .225827515}
-  m_AnchoredPosition: {x: -.5, y: -17.5}
+  m_AnchorMin: {x: .146620691, y: .0850000009}
+  m_AnchorMax: {x: .327620685, y: .191780344}
+  m_AnchoredPosition: {x: -.5, y: .5}
   m_SizeDelta: {x: .5, y: -.699996948}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &303224751
@@ -854,6 +854,7 @@ GameObject:
   - 222: {fileID: 346461537}
   - 114: {fileID: 346461536}
   - 114: {fileID: 346461535}
+  - 95: {fileID: 346461538}
   m_Layer: 5
   m_Name: VS
   m_TagString: Untagged
@@ -952,6 +953,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 346461533}
+--- !u!95 &346461538
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 346461533}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da4be93f5e13e43e6b6edcb537e091e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &352529148
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,7 +981,6 @@ GameObject:
   - 222: {fileID: 352529153}
   - 114: {fileID: 352529152}
   - 114: {fileID: 352529151}
-  - 114: {fileID: 352529150}
   m_Layer: 5
   m_Name: JWyllysBT (5)
   m_TagString: Untagged
@@ -988,20 +1005,6 @@ RectTransform:
   m_AnchoredPosition: {x: -.199996948, y: .699981689}
   m_SizeDelta: {x: 1.5, y: .299995422}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &352529150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 352529148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ca14100beb946a69cfb790aaf39727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 1
-  selectedImage: {fileID: 21300002, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
-  unselectedImage: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
 --- !u!114 &352529151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,8 +1045,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2101560241}
-        m_MethodName: BuyChar
-        m_Mode: 3
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1073,7 +1076,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e74a3089177f4d25acf35651d649e21, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1133,7 +1136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .141176477, g: .203921586, b: .270588249, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1363,7 +1366,6 @@ GameObject:
   - 222: {fileID: 725957798}
   - 114: {fileID: 725957797}
   - 114: {fileID: 725957796}
-  - 114: {fileID: 725957795}
   m_Layer: 5
   m_Name: BolsonaroBT (1)
   m_TagString: Untagged
@@ -1383,25 +1385,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1129646839}
   m_RootOrder: 7
-  m_AnchorMin: {x: .409689695, y: .120436668}
-  m_AnchorMax: {x: .590310395, y: .220436677}
-  m_AnchoredPosition: {x: .200000763, y: -17.3999996}
+  m_AnchorMin: {x: .409689695, y: .0850000009}
+  m_AnchorMax: {x: .590310395, y: .186000004}
+  m_AnchoredPosition: {x: .200000763, y: .600000381}
   m_SizeDelta: {x: .5, y: 1.30000305}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &725957795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 725957793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ca14100beb946a69cfb790aaf39727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 2
-  selectedImage: {fileID: 21300002, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
-  unselectedImage: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
 --- !u!114 &725957796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,8 +1430,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2101560241}
-        m_MethodName: BuyChar
-        m_Mode: 3
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1473,7 +1461,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e74a3089177f4d25acf35651d649e21, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1498,7 +1486,6 @@ GameObject:
   - 222: {fileID: 819458104}
   - 114: {fileID: 819458103}
   - 114: {fileID: 819458102}
-  - 114: {fileID: 819458101}
   m_Layer: 5
   m_Name: JWyllysBT (4)
   m_TagString: Untagged
@@ -1518,25 +1505,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1129646839}
   m_RootOrder: 9
-  m_AnchorMin: {x: .685310423, y: .225827515}
-  m_AnchorMax: {x: .862000048, y: .322609186}
-  m_AnchoredPosition: {x: -.199996948, y: -6.69999981}
-  m_SizeDelta: {x: 1.5, y: 2.29999542}
+  m_AnchorMin: {x: .685310423, y: .210802764}
+  m_AnchorMax: {x: .862000048, y: .313000023}
+  m_AnchoredPosition: {x: -.199996948, y: -.199999809}
+  m_SizeDelta: {x: 1.5, y: -.700004578}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &819458101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 819458099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ca14100beb946a69cfb790aaf39727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 1
-  selectedImage: {fileID: 21300002, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
-  unselectedImage: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
 --- !u!114 &819458102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1577,8 +1550,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2101560241}
-        m_MethodName: BuyChar
-        m_Mode: 3
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1608,7 +1581,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e74a3089177f4d25acf35651d649e21, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1747,7 +1720,6 @@ GameObject:
   - 222: {fileID: 921176940}
   - 114: {fileID: 921176939}
   - 114: {fileID: 921176938}
-  - 114: {fileID: 921176937}
   m_Layer: 5
   m_Name: BolsonaroBT (2)
   m_TagString: Untagged
@@ -1767,25 +1739,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1129646839}
   m_RootOrder: 10
-  m_AnchorMin: {x: .685310423, y: .120436668}
-  m_AnchorMax: {x: .862000048, y: .220436677}
-  m_AnchoredPosition: {x: -.199996948, y: -17.3999996}
+  m_AnchorMin: {x: .685310423, y: .0850000009}
+  m_AnchorMax: {x: .862000048, y: .186000004}
+  m_AnchoredPosition: {x: -.199996948, y: .600000381}
   m_SizeDelta: {x: 1.5, y: 1.30000305}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &921176937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 921176935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ca14100beb946a69cfb790aaf39727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 2
-  selectedImage: {fileID: 21300002, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
-  unselectedImage: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
 --- !u!114 &921176938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1826,8 +1784,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2101560241}
-        m_MethodName: BuyChar
-        m_Mode: 3
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1857,7 +1815,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e74a3089177f4d25acf35651d649e21, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2387,9 +2345,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1129646839}
   m_RootOrder: 3
-  m_AnchorMin: {x: .146620691, y: .225827515}
-  m_AnchorMax: {x: .327620685, y: .328000009}
-  m_AnchoredPosition: {x: -.5, y: -6.80000019}
+  m_AnchorMin: {x: .146620691, y: .210802764}
+  m_AnchorMax: {x: .327620685, y: .313000023}
+  m_AnchoredPosition: {x: -.5, y: 1.19999981}
   m_SizeDelta: {x: .5, y: .299995422}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1404343056
@@ -2404,8 +2362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonType: 1
-  selectedImage: {fileID: 21300002, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
-  unselectedImage: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
+  selectedImage: {fileID: 21300004, guid: e0f8163c535064d91818bd704321035d, type: 3}
+  unselectedImage: {fileID: 21300006, guid: e0f8163c535064d91818bd704321035d, type: 3}
 --- !u!1 &1456887869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,7 +2482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .141176477, g: .203921586, b: .270588249, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2654,7 +2612,6 @@ GameObject:
   - 222: {fileID: 1834439468}
   - 114: {fileID: 1834439467}
   - 114: {fileID: 1834439466}
-  - 114: {fileID: 1834439465}
   m_Layer: 5
   m_Name: JWyllysBT (2)
   m_TagString: Untagged
@@ -2679,20 +2636,6 @@ RectTransform:
   m_AnchoredPosition: {x: .200000763, y: .699999809}
   m_SizeDelta: {x: .5, y: .299995422}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &1834439465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1834439463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ca14100beb946a69cfb790aaf39727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 1
-  selectedImage: {fileID: 21300002, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
-  unselectedImage: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
 --- !u!114 &1834439466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2733,8 +2676,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2101560241}
-        m_MethodName: BuyChar
-        m_Mode: 3
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2764,7 +2707,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e74a3089177f4d25acf35651d649e21, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2884,6 +2827,7 @@ MonoBehaviour:
   undoBT: {fileID: 1175615103}
   confirmBT: {fileID: 612257652}
   versusBT: {fileID: 346461535}
+  versusAnimator: {fileID: 346461538}
   p1Name: {fileID: 1663924163}
   p2Name: {fileID: 414918389}
   gameMode: {fileID: 445082708}
@@ -2892,6 +2836,7 @@ MonoBehaviour:
   charButtons:
   - {fileID: 1404343056}
   - {fileID: 303224754}
+  - {fileID: 209406080}
   purchase: {fileID: 0}
 --- !u!1 &2111333393
 GameObject:
@@ -2904,7 +2849,6 @@ GameObject:
   - 222: {fileID: 2111333398}
   - 114: {fileID: 2111333397}
   - 114: {fileID: 2111333396}
-  - 114: {fileID: 2111333395}
   m_Layer: 5
   m_Name: JWyllysBT (3)
   m_TagString: Untagged
@@ -2924,25 +2868,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1129646839}
   m_RootOrder: 8
-  m_AnchorMin: {x: .409689695, y: .220436677}
-  m_AnchorMax: {x: .590310395, y: .322609186}
-  m_AnchoredPosition: {x: .200000763, y: -6}
-  m_SizeDelta: {x: .5, y: -.349999994}
+  m_AnchorMin: {x: .409689695, y: .210802764}
+  m_AnchorMax: {x: .590310395, y: .309146464}
+  m_AnchoredPosition: {x: .200000763, y: 0}
+  m_SizeDelta: {x: .5, y: 1.64999962}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &2111333395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2111333393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ca14100beb946a69cfb790aaf39727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonType: 1
-  selectedImage: {fileID: 21300002, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
-  unselectedImage: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
 --- !u!114 &2111333396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2983,8 +2913,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2101560241}
-        m_MethodName: BuyChar
-        m_Mode: 3
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3014,7 +2944,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e74a3089177f4d25acf35651d649e21, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 827e9686d1e5b41a7ad20a0c7940df98
-timeCreated: 1446351241
+guid: 24f041fe4f9a746dba62ddf402d5a03b
+timeCreated: 1446350518
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: jean_wyllys_0
-    21300002: jean_wyllys_1
-    21300004: jean_wyllys_2
-    21300006: jean_wyllys_3
-    21300008: jean_wyllys_4
-    21300010: jean_wyllys_5
+    21300000: sprite_dilma_0
+    21300002: sprite_dilma_1
+    21300004: sprite_dilma_2
+    21300006: sprite_dilma_3
+    21300008: sprite_dilma_4
+    21300010: sprite_dilma_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,63 +56,63 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: jean_wyllys_0
+    - name: sprite_dilma_0
       rect:
         serializedVersion: 2
-        x: 394
-        y: 564
-        width: 236
-        height: 222
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jean_wyllys_1
-      rect:
-        serializedVersion: 2
-        x: 328
-        y: 358
-        width: 75
-        height: 126
+        x: 839
+        y: 1111
+        width: 379
+        height: 474
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jean_wyllys_2
+    - name: sprite_dilma_1
       rect:
         serializedVersion: 2
-        x: 455
-        y: 380
-        width: 113
-        height: 107
+        x: 668
+        y: 723
+        width: 140
+        height: 201
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jean_wyllys_3
+    - name: sprite_dilma_2
       rect:
         serializedVersion: 2
-        x: 612
-        y: 358
-        width: 76
-        height: 126
+        x: 913
+        y: 763
+        width: 219
+        height: 217
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jean_wyllys_4
+    - name: sprite_dilma_3
       rect:
         serializedVersion: 2
-        x: 431
-        y: 272
-        width: 49
-        height: 71
+        x: 1264
+        y: 723
+        width: 140
+        height: 201
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: jean_wyllys_5
+    - name: sprite_dilma_4
       rect:
         serializedVersion: 2
-        x: 540
-        y: 274
-        width: 50
-        height: 69
+        x: 865
+        y: 546
+        width: 96
+        height: 151
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sprite_dilma_5
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 547
+        width: 97
+        height: 151
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
