@@ -46,7 +46,7 @@ public class Powlitico : MonoBehaviour {
 			break;
 
 		case CharType.DILMA:
-			sprites = Resources.LoadAll<Sprite>("Sprites/sprite_dilma\t");
+			sprites = Resources.LoadAll<Sprite>("Sprites/sprite_dilma");
 			Head.sprite = sprites[0];
 			Body.sprite = sprites[2];
 			FootD.sprite = sprites[4];

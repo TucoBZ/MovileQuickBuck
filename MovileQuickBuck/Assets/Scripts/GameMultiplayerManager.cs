@@ -75,10 +75,10 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			controller.pow1 = pow1;
 			controller.pow2 = pow2;
 			//controller.versusBT = versusBT;
-			controller.ResetGame ();
+			controller.SetName();
 			controller.player1Name = _p1NameDown;
 			controller.player2Name = _p2NameDown;
-
+			controller.SetName();	
 		}
 
 
@@ -350,6 +350,8 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	private void UpPlayerWinner(){
 
 		_textCenter.text = "PlayerUp"; 
+		pow1.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+
 
 		Image myImage = _scoreDownPlayerUp [_upPoints].GetComponent<Image> ();
 		myImage.sprite = pointBlue;
@@ -366,7 +368,8 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	private void DownPlayerWinner(){
 		
 		_textCenter.text = "PlayerDown"; 
-		
+		pow2.gameObject.GetComponent<Animator>().SetTrigger("Pie");
+
 		Image myImage = _scoreDownPlayerDown [_downPoints].GetComponent<Image> ();
 		myImage.sprite = pointBlue;
 		

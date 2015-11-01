@@ -741,6 +741,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 22472892, guid: 47271b102dcb940599f961a34d158816, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -.880933225
+      objectReference: {fileID: 0}
+    - target: {fileID: 22472892, guid: 47271b102dcb940599f961a34d158816, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .473240614
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47271b102dcb940599f961a34d158816, type: 2}
   m_IsPrefabParent: 0

@@ -188,8 +188,10 @@ public class PowliticosStore : MonoBehaviour {
 
 		if (controller != null) {
 			if(controller.isInArcadeMode()){
+				controller.CheckRandom();
 				Application.LoadLevel(3);
 			}else{
+				controller.CheckRandom();
 				Application.LoadLevel(2);
 			}
 
@@ -267,7 +269,7 @@ public class PowliticosStore : MonoBehaviour {
 			switch (type) {
 			case CharType.JWYLLYS:
 
-					StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID);
+				StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID);
 				
 				break;
 			case CharType.JBOLSONARO:

@@ -6,7 +6,7 @@ using Soomla.Store;
 public class PowliticosStoreAssets : IStoreAssets {                                                                           
 
 	public int GetVersion() {                                                                                                           
-		return 2;
+		return 3;
 	}
 	
 	public VirtualCurrency[] GetCurrencies() {                                                                              

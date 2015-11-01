@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 
 	public Powlitico pow1;
 	public Powlitico pow2;
+	public CharType[] chars;
 
 	public AudioSource bgmusic;
 	public AudioSource effect;
@@ -72,6 +73,48 @@ public class GameController : MonoBehaviour {
 			pow2.SetPowliticoWithType(player2);
 		}
 		
+	}
+
+	private void AllCharacters(){
+		//chars = new CharType[3]();
+		//chars[0] = CharType.JWYLLYS;
+		//chars[1] = CharType.JBOLSONARO;
+		//chars[2] = CharType.DILMA;
+	}
+	
+	public CharType RandomCharType(){
+
+		int range = Random.Range(0, 20);
+		range = range % 3;
+		range++;	
+		Debug.Log (range);
+		CharType character = CharType.RANDOM;
+
+		switch (range) {
+		case (int)CharType.JWYLLYS:
+			character = CharType.JWYLLYS;
+			break;
+		case (int)CharType.JBOLSONARO:
+			character = CharType.JBOLSONARO;
+			break;
+		case (int)CharType.DILMA:
+			character = CharType.DILMA;
+			break;
+		default:
+			break;
+		}
+
+		return character;
+	}
+	
+	public void CheckRandom(){
+		if (player1 == CharType.RANDOM) {
+			player1 = RandomCharType();
+		}
+		if (player2 == CharType.RANDOM) {
+			player2 = RandomCharType();
+			//CheckRandom();	
+		}
 	}
 
 	public void SetName(){
