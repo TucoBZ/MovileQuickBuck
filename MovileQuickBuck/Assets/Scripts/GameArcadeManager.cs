@@ -60,6 +60,11 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	public Powlitico pow1;
 	public Powlitico pow2;
 
+	public Powlitico powWinner;
+
+	public GameObject winPanel;
+
+
 	// Use this for initialization
 	void Start () {
 
@@ -194,10 +199,20 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		if (_upPoints == 3) {
 			
 			Debug.Log ("Player UP WINNER");
+
+			powWinner.SetPowliticoWithType(controller.player2);
+			winPanel.SetActive(true);
+
 			
 		} else if (_downPoints == 3) {
 			
 			Debug.Log ("Player DOWN WINNER");
+
+
+			powWinner.SetPowliticoWithType(controller.player1);
+			winPanel.SetActive(true);
+
+
 			
 		} else {
 			
@@ -356,10 +371,12 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	public void ResetGame(){
 		
 		pausePainel.SetActive (false);
-		
+		winPanel.SetActive (false);
+
 		_upPoints = 0;
 		_downPoints = 0;
 		ResetScore ();
+		ShowDownMenu ();
 		ChangeStateTo (GameState.Default);
 		
 		
@@ -385,5 +402,8 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	private void DownHettedHead(){
 		pow1.gameObject.GetComponent<Animator>().SetTrigger("PieHead");
 	}
+
+
+
 }
 

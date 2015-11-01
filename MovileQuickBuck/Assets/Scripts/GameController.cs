@@ -9,8 +9,8 @@ public class GameController : MonoBehaviour {
 
 	public GameMode mode = GameMode.ARCADE;
 
-	private CharType player1 = CharType.RANDOM; 
-	private CharType player2 = CharType.RANDOM; 
+	public CharType player1 = CharType.RANDOM; 
+	public CharType player2 = CharType.RANDOM; 
 
 	public Text player1Name;
 	public Text player2Name;

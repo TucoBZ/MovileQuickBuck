@@ -62,8 +62,10 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 	public GameObject pausePainel;
 	private GameController controller;
-
-	public GameObject tortaGameobject;
+	
+	public Powlitico powWinner;
+	
+	public GameObject winPanel;
 
 	// Use this for initialization
 	void Start () {
@@ -245,9 +247,17 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 			Debug.Log ("Player UP WINNER");
 
+			powWinner.SetPowliticoWithType(controller.player2);
+			winPanel.SetActive(true);
+
+
 		} else if (_downPoints == 3) {
 
 			Debug.Log ("Player DOWN WINNER");
+
+			powWinner.SetPowliticoWithType(controller.player1);
+			winPanel.SetActive(true);
+
 
 		} else {
 
@@ -437,10 +447,13 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	public void ResetGame(){
 		
 		pausePainel.SetActive (false);
+		winPanel.SetActive (false);
 
 		_upPoints = 0;
 		_downPoints = 0;
 		ResetScore ();
+		ShowDownMenu ();
+		ShowUpMenu ();
 		ChangeStateTo (GameState.Default);
 
 		
