@@ -27,7 +27,7 @@ public class PowliticosStore : MonoBehaviour {
 	private GameController controller;
 
 	public PurchaseAlert purchase;
-	//public AudioClip _beachSound;
+	public AudioClip urna;
 	//public AudioClip _mainMusic;
 	
 	void Start ()
