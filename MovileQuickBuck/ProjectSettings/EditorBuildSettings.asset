@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/Scenes/ArcadeGameScene.unity
   - enabled: 1
     path: Assets/Scenes/Creditos.unity
+  - enabled: 1
+    path: Assets/Scenes/PoliticosScene.unity

@@ -29,4 +29,9 @@ public class MenuPrincipal : MonoBehaviour {
 	public void Creditos(){
 		Application.LoadLevel(4);
 	}
+
+	public void Politicos(){
+		Application.LoadLevel(5);
+	}
+
 }
