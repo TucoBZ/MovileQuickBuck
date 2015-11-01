@@ -2849,6 +2849,7 @@ MonoBehaviour:
   - {fileID: 303224754}
   - {fileID: 209406080}
   purchase: {fileID: 0}
+  urna: {fileID: 8300000, guid: 84eab67b86123494788e8320d1626214, type: 3}
 --- !u!1 &2111333393
 GameObject:
   m_ObjectHideFlags: 0

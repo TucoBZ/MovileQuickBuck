@@ -162,6 +162,9 @@ public class PowliticosStore : MonoBehaviour {
 	public void RandomBT(){
 		CheckButtons ();
 		controller.NullConfirm ();
+		if (!controller.isInArcadeMode ()) {
+			controller.PlaySoundEffect(urna, 0.6f);
+		}
 	}
 
 	public void CancelBT(){
@@ -175,6 +178,9 @@ public class PowliticosStore : MonoBehaviour {
 
 		controller.ConfirmSelection();
 		CheckButtons ();
+		if (!controller.isInArcadeMode ()) {
+			controller.PlaySoundEffect(urna, 0.6f);
+		}
 
 	}
 

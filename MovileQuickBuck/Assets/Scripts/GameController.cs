@@ -66,6 +66,12 @@ public class GameController : MonoBehaviour {
 		selectStatus = GameSelection.P1_CONFIRM;
 	}
 
+	public void PlaySoundEffect(AudioClip clip, float offset){
+		effect.clip = clip;
+		effect.time = offset;
+		effect.Play();
+	}
+
 	public void SetPowlitico(){
 		
 		if ((pow1 != null) && (pow2 != null)) {
@@ -75,13 +81,6 @@ public class GameController : MonoBehaviour {
 		
 	}
 
-	private void AllCharacters(){
-		//chars = new CharType[3]();
-		//chars[0] = CharType.JWYLLYS;
-		//chars[1] = CharType.JBOLSONARO;
-		//chars[2] = CharType.DILMA;
-	}
-	
 	public CharType RandomCharType(){
 
 		int range = Random.Range(0, 20);
