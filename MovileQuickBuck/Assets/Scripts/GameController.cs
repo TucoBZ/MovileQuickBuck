@@ -18,6 +18,9 @@ public class GameController : MonoBehaviour {
 	public Powlitico pow1;
 	public Powlitico pow2;
 
+	public AudioSource bgmusic;
+	public AudioSource effect;
+
 	public Button versusBT;
 
 	private GameSelection selectStatus = GameSelection.P1_CONFIRM;
@@ -129,6 +132,9 @@ public class GameController : MonoBehaviour {
 			break;
 		case CharType.JBOLSONARO:
 			name = "Jair Bolsonaro";
+			break;
+		case CharType.DILMA:
+			name = "Dilma";
 			break;
 		default:
 			break;
