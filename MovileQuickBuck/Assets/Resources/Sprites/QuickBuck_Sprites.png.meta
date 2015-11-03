@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 012d3a8c26d9645e0b3d29a4124877a3
-timeCreated: 1446328751
+timeCreated: 1446562907
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -22,6 +22,7 @@ TextureImporter:
     21300030: QuickBuck Sprites_15
     21300032: QuickBuck Sprites_16
     21300034: QuickBuck Sprites_17
+    21300036: QuickBuck_Sprites_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -76,7 +77,7 @@ TextureImporter:
         width: 829
         height: 1473
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_1
       rect:
@@ -86,7 +87,7 @@ TextureImporter:
         width: 127
         height: 135
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_2
       rect:
@@ -96,7 +97,7 @@ TextureImporter:
         width: 127
         height: 135
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_3
       rect:
@@ -106,7 +107,7 @@ TextureImporter:
         width: 200
         height: 213
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_4
       rect:
@@ -116,7 +117,7 @@ TextureImporter:
         width: 77
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_5
       rect:
@@ -126,7 +127,7 @@ TextureImporter:
         width: 74
         height: 125
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_6
       rect:
@@ -136,7 +137,7 @@ TextureImporter:
         width: 109
         height: 104
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_7
       rect:
@@ -146,7 +147,7 @@ TextureImporter:
         width: 75
         height: 126
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_8
       rect:
@@ -156,7 +157,7 @@ TextureImporter:
         width: 230
         height: 353
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_9
       rect:
@@ -166,7 +167,7 @@ TextureImporter:
         width: 48
         height: 69
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_10
       rect:
@@ -176,7 +177,7 @@ TextureImporter:
         width: 49
         height: 69
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_11
       rect:
@@ -186,7 +187,7 @@ TextureImporter:
         width: 539
         height: 115
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_12
       rect:
@@ -196,7 +197,7 @@ TextureImporter:
         width: 277
         height: 105
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_13
       rect:
@@ -206,7 +207,7 @@ TextureImporter:
         width: 277
         height: 105
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_14
       rect:
@@ -216,7 +217,7 @@ TextureImporter:
         width: 16
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_15
       rect:
@@ -226,7 +227,7 @@ TextureImporter:
         width: 277
         height: 106
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_16
       rect:
@@ -236,7 +237,7 @@ TextureImporter:
         width: 47
         height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_17
       rect:
@@ -246,7 +247,17 @@ TextureImporter:
         width: 539
         height: 538
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: QuickBuck_Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 391
+        width: 26
+        height: 1473
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
