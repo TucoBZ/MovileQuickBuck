@@ -182,10 +182,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  player1: 0
+  player2: 0
+  powliticos:
+  - {fileID: 11431212, guid: 36165d7b34b044d8f866ef0ded6d32a5, type: 2}
+  - {fileID: 11478712, guid: a9cc1e8c5f80b410c9ad2e60f8bc8047, type: 2}
+  - {fileID: 11408102, guid: f9bf517125d1a457291361879915198d, type: 2}
+  - {fileID: 11404848, guid: 6a45708ae970f49d5b277cbfb458a139, type: 2}
   player1Name: {fileID: 0}
   player2Name: {fileID: 0}
   pow1: {fileID: 0}
   pow2: {fileID: 0}
+  chars: 
   bgmusic: {fileID: 8224328}
   effect: {fileID: 8220912}
   versusBT: {fileID: 0}

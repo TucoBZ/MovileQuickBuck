@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public enum GameMode {ARCADE, MULTIPLAYER}
@@ -12,6 +13,7 @@ public class GameController : MonoBehaviour {
 	public CharType player1 = CharType.RANDOM; 
 	public CharType player2 = CharType.RANDOM; 
 
+	public Powlitico[] powliticos;
 	public Text player1Name;
 	public Text player2Name;
 
@@ -46,12 +48,7 @@ public class GameController : MonoBehaviour {
 		return sharedInstance;
 	}
 
-	/// <summary>
-	/// Changes the player selection.
-	/// </summary>
-	/// <param name="player"> 0 = Player1 / 1 = Player2.</param>
-	/// <param name="type">Type.</param>
-	
+
 	public void ResetGame(){
 
 		player1 = CharType.RANDOM; 
@@ -75,8 +72,17 @@ public class GameController : MonoBehaviour {
 	public void SetPowlitico(){
 		
 		if ((pow1 != null) && (pow2 != null)) {
-			pow1.SetPowliticoWithType(player1);
-			pow2.SetPowliticoWithType(player2);
+
+			//Seta Player 1 na tela
+			GameObject newPow1 = Instantiate(powliticoForCharType(player1).gameObject,pow1.gameObject.transform.position,Quaternion.identity) as GameObject;
+			Destroy(pow1.gameObject);
+			pow1 = newPow1.GetComponent<Powlitico>();
+
+			//Seta Player 2 na tela
+			GameObject newPow2 = Instantiate(powliticoForCharType(player2).gameObject,pow2.gameObject.transform.position,Quaternion.identity) as GameObject;
+			Destroy(pow2.gameObject);
+			pow2 = newPow2.GetComponent<Powlitico>();
+
 		}
 		
 	}
@@ -162,27 +168,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public string CharName(CharType type){
-		string name = "";
-
-		switch (type) {
-
-		case CharType.RANDOM:
-			name = "Aleatório";
-			break;
-		case CharType.JWYLLYS:
-			name = "Jean Wyllys";
-			break;
-		case CharType.JBOLSONARO:
-			name = "Jair Bolsonaro";
-			break;
-		case CharType.DILMA:
-			name = "Dilma";
-			break;
-		default:
-			break;
-		}
-
-		return name;
+		return powliticoForCharType(type).info.Nome;
 	}
 
 	public void UndoSelection(){
@@ -253,5 +239,20 @@ public class GameController : MonoBehaviour {
 
 	public bool isReady(){
 		return (selectStatus == GameSelection.READY) ? true : false;
+	}
+
+	public Powlitico powliticoForCharType(CharType type){
+
+		Powlitico powlitico = null;
+
+		foreach(Powlitico pow in powliticos){
+
+			if(type == pow.type){
+				powlitico = pow;
+				break;
+			}
+		}
+
+		return powlitico;
 	}
 }

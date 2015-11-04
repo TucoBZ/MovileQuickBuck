@@ -1,95 +1,87 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+using Soomla.Store;
+
+[System.Serializable]
+public class PowliticoSprites {
+	public Sprite SelectedHead;
+	public Sprite UnselectedHead;
+	public Sprite Head;
+	public Sprite Body;
+	public Sprite FootL;
+	public Sprite FootR;
+	public Sprite HandL;
+	public Sprite HandR;
+}
+
+[System.Serializable]
+public class PowliticoSpriteRenderer {
+	public SpriteRenderer Head;
+	public SpriteRenderer Body;
+	public SpriteRenderer FootL;
+	public SpriteRenderer FootR;
+	public SpriteRenderer HandL;
+	public SpriteRenderer HandR;
+}
+
+[System.Serializable]
+public class PowliticoStoreValues {
+	public string PRODUCT_ID;
+	public string Name;
+	public string Description;
+	public double Value;
 
 
+	public  VirtualGood PowliticoVirtualProduct (){
+		return new LifetimeVG(
+			Name, 										// name
+			Description,				 				// description
+			PRODUCT_ID,									// item id
+			new PurchaseWithMarket(PRODUCT_ID,Value));	// the way this virtual good is purchased
+	}
+
+}
+
+
+[System.Serializable]
+public class PowliticoInfo {
+	public string Nome;
+	public string Partido;
+	public string Twitter;
+	public string Description;
+}
+
+[ExecuteInEditMode]
 public class Powlitico : MonoBehaviour {
 
-	public Image Head;
-	public Image Body;
+	public CharType type;
+	public PowliticoSprites sprites;
+	public PowliticoSpriteRenderer renderers;
+	public PowliticoStoreValues storeValues;
+	public PowliticoInfo info;
 
-	public Image FootD;
-	public Image FootE;
-
-	public Image HandD;
-	public Image HandE;
-
-	public Image RandomImg;
-
-	public void SetPowliticoWithType(CharType type){
-		Sprite[] sprites = null;
-		switch (type) {
-		case CharType.RANDOM:
-			AbleImages(false);
-			break;
-		case CharType.JWYLLYS:
-			sprites = Resources.LoadAll<Sprite>("Sprites/jean_wyllys");
-			Head.sprite = sprites[0];
-			Body.sprite = sprites[2];
-			FootD.sprite = sprites[4];
-			FootE.sprite = sprites[5];
-			HandD.sprite = sprites[1];
-			HandE.sprite = sprites[3];
-			AbleImages(true);
-
-
-			break;
-		case CharType.JBOLSONARO:
-			sprites = Resources.LoadAll<Sprite>("Sprites/QuickBuck_Sprites");
-			Head.sprite = sprites[3];
-			Body.sprite = sprites[6];
-			FootD.sprite = sprites[9];
-			FootE.sprite = sprites[10];
-			HandD.sprite = sprites[5];
-			HandE.sprite = sprites[7];
-			AbleImages(true);
-			break;
-
-		case CharType.DILMA:
-			sprites = Resources.LoadAll<Sprite>("Sprites/sprite_dilma");
-			Head.sprite = sprites[0];
-			Body.sprite = sprites[2];
-			FootD.sprite = sprites[4];
-			FootE.sprite = sprites[5];
-			HandD.sprite = sprites[1];
-			HandE.sprite = sprites[3];
-			AbleImages(true);
-
-			break;
-		default:
-			break;
-			
-		}
+	public bool updateSkin = false;
+	
+	public void setSkin(){
+		renderers.Head.sprite = sprites.Head;
+		renderers.Body.sprite = sprites.Body;
+		renderers.HandL.sprite = sprites.HandL;
+		renderers.HandR.sprite = sprites.HandR;
+		renderers.FootL.sprite = sprites.FootL;
+		renderers.FootR.sprite = sprites.FootR;
 	}
 
-	private void AbleImages(bool able){
-		if (able) {
-//			Color color = Color.white;
-//			color.a = 0;
-//			RandomImg.color = color;
-			RandomImg.enabled = false;
-		} else {
-//			Color color = Color.white;
-//			color.a = 1;
-//			RandomImg.color = color;
-			RandomImg.enabled = true;
+	#if UNITY_EDITOR
+	void Update () 
+	{
+		if (updateSkin) {
+			setSkin();
+			updateSkin = false;
 		}
 
-		Head.gameObject.SetActive(able);
-		Body.gameObject.SetActive(able);
-		FootD.gameObject.SetActive(able);
-		FootE.gameObject.SetActive(able);
-		HandD.gameObject.SetActive(able);
-		HandE.gameObject.SetActive(able);
 	}
+	#endif
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

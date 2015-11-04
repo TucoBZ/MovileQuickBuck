@@ -74,8 +74,8 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			controller = gmControl.GetComponent<GameController> ();
 			controller.player1Name = _p1NameDown;
 			controller.player2Name = _p2NameDown;
-			controller.pow1 = pow1;
-			controller.pow2 = pow2;
+			//controller.pow1 = pow1;
+			//controller.pow2 = pow2;
 			controller.SetName ();
 		}
 
@@ -200,7 +200,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			
 			Debug.Log ("Player UP WINNER");
 
-			powWinner.SetPowliticoWithType(controller.player2);
+			//powWinner.SetPowliticoWithType(controller.player2);
 			winPanel.SetActive(true);
 
 			
@@ -209,7 +209,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			Debug.Log ("Player DOWN WINNER");
 
 
-			powWinner.SetPowliticoWithType(controller.player1);
+			//powWinner.SetPowliticoWithType(controller.player1);
 			winPanel.SetActive(true);
 
 

@@ -10,20 +10,10 @@ public class BuyCharButton : MonoBehaviour {
 	public Sprite selectedImage;
 	public Sprite unselectedImage;
 
-	public void checkAble(int able){
-
-//		if (able > 0) {
-//			buttonImage.color = Color.blue;
-//		}else{
-//			buttonImage.color = Color.black;
-//		}
-
-		buttonImage.sprite = unselectedImage;
-	}
 
 	public void SetInteractable (bool interactable){
 
-		gameObject.GetComponent<Button> ().interactable = interactable;
+		gameObject.GetComponent<Button>().interactable = interactable;
 	
 	}
 
@@ -32,10 +22,16 @@ public class BuyCharButton : MonoBehaviour {
 		buttonImage = this.GetComponent<Image>();
 	}
 
-	public void selectButton(){
+	public void SelectButton(){
+		if (buttonType != CharType.RANDOM) {
+			buttonImage.sprite = selectedImage;
+		}
+	}
 
-		buttonImage.sprite = selectedImage;
-
+	public void UnselectButton(){
+		if (buttonType != CharType.RANDOM) {
+			buttonImage.sprite = unselectedImage;
+		}	
 	}
 	
 }

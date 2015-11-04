@@ -62,11 +62,11 @@ public class SelectPolitico : MonoBehaviour {
 
 		foreach (BuyCharButton bt in charButtons) {
 			if (bt.buttonType == typeChar){
-				bt.selectButton();
+				bt.SelectButton();
 			}
 		}
 
-		powlitico.SetPowliticoWithType (typeChar);
+		//powlitico.SetPowliticoWithType (typeChar);
 
 		SelectCharInController (index);
 		
@@ -88,16 +88,16 @@ public class SelectPolitico : MonoBehaviour {
 
 			switch (bt.buttonType) {
 			case CharType.JWYLLYS:
-				bt.checkAble(0);
+				//bt.checkAble(0);
 				
 				break;
 			case CharType.JBOLSONARO:
-				bt.checkAble(0);
+				//bt.checkAble(0);
 				
 				break;
 				
 			case CharType.DILMA:
-				bt.checkAble(0);
+				//bt.checkAble(0);
 				
 				break;
 			default:

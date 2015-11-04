@@ -247,7 +247,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 			Debug.Log ("Player UP WINNER");
 
-			powWinner.SetPowliticoWithType(controller.player2);
+			//powWinner.SetPowliticoWithType(controller.player2);
 			winPanel.SetActive(true);
 
 
@@ -255,7 +255,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 			Debug.Log ("Player DOWN WINNER");
 
-			powWinner.SetPowliticoWithType(controller.player1);
+			//powWinner.SetPowliticoWithType(controller.player1);
 			winPanel.SetActive(true);
 
 
