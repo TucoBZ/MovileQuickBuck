@@ -71,8 +71,11 @@ MonoBehaviour:
   _p2NameDown: {fileID: 0}
   pow1: {fileID: 0}
   pow2: {fileID: 0}
-  powWinner: {fileID: 0}
-  winPanel: {fileID: 0}
+  winnerMenu:
+    WinnerBackground: {fileID: 0}
+    WinnerCanvas: {fileID: 0}
+    WinnerPow: {fileID: 0}
+  gameArcadeCanvas: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

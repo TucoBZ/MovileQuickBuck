@@ -3,6 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+
+[System.Serializable]
+public class WinnerMenu {
+	public GameObject WinnerBackground;
+	public GameObject WinnerCanvas;
+	public Powlitico WinnerPow;
+
+	public void SetWinnerMenuAble(bool able){
+		WinnerBackground.SetActive(able);
+		WinnerCanvas.SetActive(able);
+	}
+}
+
 public enum GameState{ Default, Ready, OnGame, WinnerTime};
 
 public class GameArcadeManager : MonoBehaviour, TouchObserver {
@@ -60,9 +73,10 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	public Powlitico pow1;
 	public Powlitico pow2;
 
-	public Powlitico powWinner;
+	public WinnerMenu winnerMenu;
 
-	public GameObject winPanel;
+	//Paineis com os menus
+	public GameObject gameArcadeCanvas;
 
 
 	// Use this for initialization
@@ -74,10 +88,14 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			controller = gmControl.GetComponent<GameController> ();
 			controller.player1Name = _p1NameDown;
 			controller.player2Name = _p2NameDown;
-			//controller.pow1 = pow1;
-			//controller.pow2 = pow2;
+			controller.pow1 = pow1;
+			controller.pow2 = pow2;
 			controller.SetName ();
+			pow1 = controller.pow1;
+			pow2 = controller.pow2;
 		}
+
+		winnerMenu.SetWinnerMenuAble (false);
 
 		_gestureBang = GestureDetectureBang.GetSharedGestureDetector();
 		
@@ -201,7 +219,11 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			Debug.Log ("Player UP WINNER");
 
 			//powWinner.SetPowliticoWithType(controller.player2);
-			winPanel.SetActive(true);
+			controller.powWinner = winnerMenu.WinnerPow;
+			controller.SetPowliticoWinner(controller.player2);
+			winnerMenu.WinnerPow = controller.powWinner;
+			winnerMenu.SetWinnerMenuAble(true);
+			AbleGame(false);
 
 			
 		} else if (_downPoints == 3) {
@@ -210,7 +232,12 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 
 
 			//powWinner.SetPowliticoWithType(controller.player1);
-			winPanel.SetActive(true);
+
+			controller.powWinner = winnerMenu.WinnerPow;
+			controller.SetPowliticoWinner(controller.player1);
+			winnerMenu.WinnerPow = controller.powWinner;
+			winnerMenu.SetWinnerMenuAble(true);
+			AbleGame(false);
 
 
 			
@@ -224,6 +251,14 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		
 		
 		
+	}
+
+	public void AbleGame(bool able){
+
+		pow1.gameObject.SetActive(able);
+		pow2.gameObject.SetActive(able);
+		gameArcadeCanvas.SetActive(able);
+
 	}
 	
 	//Co-routine do Game
@@ -293,9 +328,9 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 
 		UpHitPie ();
 		
-		yield return new WaitForSeconds (0.7f);
+		yield return new WaitForSeconds (1.3f);
 		
-		DownHettedHead ();
+		//DownHettedHead ();
 
 		powImage.SetActive (false);
 		_textCenter.color = Color.black;
@@ -315,9 +350,9 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 
 		DownHitPie ();
 		
-		yield return new WaitForSeconds (0.7f);
+		yield return new WaitForSeconds (1.3f);
 		
-		UpHettedHead ();
+		//UpHettedHead ();
 
 		powImage.SetActive (false);
 		_textCenter.color = Color.black;
@@ -371,8 +406,8 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	public void ResetGame(){
 		
 		pausePainel.SetActive (false);
-		winPanel.SetActive (false);
-
+		winnerMenu.SetWinnerMenuAble(false);
+		AbleGame(true);
 		_upPoints = 0;
 		_downPoints = 0;
 		ResetScore ();
@@ -395,15 +430,5 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		pow1.gameObject.GetComponent<Animator>().SetTrigger("Pie");
 	}
 	
-	private void UpHettedHead(){
-		pow2.gameObject.GetComponent<Animator>().SetTrigger("PieHead");
-	}
-	
-	private void DownHettedHead(){
-		pow1.gameObject.GetComponent<Animator>().SetTrigger("PieHead");
-	}
-
-
-
 }
 

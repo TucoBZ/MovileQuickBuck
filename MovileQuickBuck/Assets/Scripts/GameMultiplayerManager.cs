@@ -63,28 +63,29 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	public GameObject pausePainel;
 	private GameController controller;
 	
-	public Powlitico powWinner;
-	
-	public GameObject winPanel;
+	public WinnerMenu winnerMenu;
+
+	//Paineis com os menus
+	public GameObject gameArcadeCanvas;
 
 	// Use this for initialization
 	void Start () {
 
 		GameObject gmControl = GameObject.FindGameObjectWithTag ("GameController");
-		
+
 		if (gmControl != null) {
-			controller = gmControl.GetComponent<GameController>();
+			controller = gmControl.GetComponent<GameController> ();
 			controller.player1Name = _p1NameUp;
 			controller.player2Name = _p2NameUp;
 			controller.pow1 = pow1;
 			controller.pow2 = pow2;
-			//controller.versusBT = versusBT;
-			controller.SetName();
+			controller.SetName ();
 			controller.player1Name = _p1NameDown;
 			controller.player2Name = _p2NameDown;
-			controller.SetName();	
+			controller.SetName();
+			pow1 = controller.pow1;
+			pow2 = controller.pow2;
 		}
-
 
 		_gestureBang = GestureDetectureBang.GetSharedGestureDetector();
 		
@@ -248,7 +249,11 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			Debug.Log ("Player UP WINNER");
 
 			//powWinner.SetPowliticoWithType(controller.player2);
-			winPanel.SetActive(true);
+			controller.powWinner = winnerMenu.WinnerPow;
+			controller.SetPowliticoWinner(controller.player2);
+			winnerMenu.WinnerPow = controller.powWinner;
+			winnerMenu.SetWinnerMenuAble(true);
+			AbleGame(false);
 
 
 		} else if (_downPoints == 3) {
@@ -256,7 +261,11 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			Debug.Log ("Player DOWN WINNER");
 
 			//powWinner.SetPowliticoWithType(controller.player1);
-			winPanel.SetActive(true);
+			controller.powWinner = winnerMenu.WinnerPow;
+			controller.SetPowliticoWinner(controller.player1);
+			winnerMenu.WinnerPow = controller.powWinner;
+			winnerMenu.SetWinnerMenuAble(true);
+			AbleGame(false);
 
 
 		} else {
@@ -268,8 +277,14 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			_playerDownButton.gameObject.SetActive(true);
 		}
 
+	}
 
-
+	public void AbleGame(bool able){
+		
+		pow1.gameObject.SetActive(able);
+		pow2.gameObject.SetActive(able);
+		gameArcadeCanvas.SetActive(able);
+		
 	}
 
 	//Co-routine do Game
@@ -360,10 +375,8 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	private IEnumerator UpPlayerWinner(){
 
 		UpHitPie ();
-
-		yield return new WaitForSeconds (0.7f);
-
-		DownHettedHead ();
+		
+		yield return new WaitForSeconds (1.3f);
 
 		Image myImage = _scoreDownPlayerUp [_upPoints].GetComponent<Image> ();
 		myImage.sprite = pointBlue;
@@ -381,9 +394,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 		DownHitPie ();
 
-		yield return new WaitForSeconds (0.7f);
-
-		UpHettedHead ();
+		yield return new WaitForSeconds (1.3f);
 
 		Image myImage = _scoreDownPlayerDown [_downPoints].GetComponent<Image> ();
 		myImage.sprite = pointBlue;
@@ -447,8 +458,8 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 	public void ResetGame(){
 		
 		pausePainel.SetActive (false);
-		winPanel.SetActive (false);
-
+		winnerMenu.SetWinnerMenuAble(false);
+		AbleGame(true);
 		_upPoints = 0;
 		_downPoints = 0;
 		ResetScore ();
@@ -472,12 +483,5 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 		pow1.gameObject.GetComponent<Animator>().SetTrigger("Pie");
 	}
 
-	private void UpHettedHead(){
-		pow2.gameObject.GetComponent<Animator>().SetTrigger("PieHead");
-	}
-	
-	private void DownHettedHead(){
-		pow1.gameObject.GetComponent<Animator>().SetTrigger("PieHead");
-	}
 }
 

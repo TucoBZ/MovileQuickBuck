@@ -19,7 +19,8 @@ public class GameController : MonoBehaviour {
 
 	public Powlitico pow1;
 	public Powlitico pow2;
-	public CharType[] chars;
+	public Powlitico powWinner;
+
 
 	public AudioSource bgmusic;
 	public AudioSource effect;
@@ -75,11 +76,15 @@ public class GameController : MonoBehaviour {
 
 			//Seta Player 1 na tela
 			GameObject newPow1 = Instantiate(powliticoForCharType(player1).gameObject,pow1.gameObject.transform.position,Quaternion.identity) as GameObject;
+			newPow1.transform.localScale = pow1.transform.localScale;
+			newPow1.transform.rotation = pow1.transform.rotation;
 			Destroy(pow1.gameObject);
 			pow1 = newPow1.GetComponent<Powlitico>();
 
 			//Seta Player 2 na tela
 			GameObject newPow2 = Instantiate(powliticoForCharType(player2).gameObject,pow2.gameObject.transform.position,Quaternion.identity) as GameObject;
+			newPow2.transform.localScale = pow2.transform.localScale;
+			newPow2.transform.rotation = pow2.transform.rotation;
 			Destroy(pow2.gameObject);
 			pow2 = newPow2.GetComponent<Powlitico>();
 
@@ -87,6 +92,21 @@ public class GameController : MonoBehaviour {
 		
 	}
 
+	public void SetPowliticoWinner(CharType type){
+		
+		if (powWinner != null) {
+			
+			//Set o Ganhador dado o tipo dele
+			GameObject newPow = Instantiate(powliticoForCharType(type).gameObject,powWinner.gameObject.transform.position,Quaternion.identity) as GameObject;
+			newPow.transform.localScale = powWinner.transform.localScale;
+			newPow.transform.rotation = powWinner.transform.rotation;
+			newPow.transform.parent = powWinner.transform.parent;
+			Destroy(powWinner.gameObject);
+			powWinner = newPow.GetComponent<Powlitico>();
+
+		}
+		
+	}
 	public CharType RandomCharType(){
 
 		int range = Random.Range(0, 20);

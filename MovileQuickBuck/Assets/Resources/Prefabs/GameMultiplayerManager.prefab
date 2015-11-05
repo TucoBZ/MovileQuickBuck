@@ -84,6 +84,11 @@ MonoBehaviour:
   pointWhite: {fileID: 21300012, guid: 1d470ff528e40428c8d623d97e6efbf6, type: 3}
   powImage: {fileID: 0}
   pausePainel: {fileID: 0}
+  winnerMenu:
+    WinnerBackground: {fileID: 0}
+    WinnerCanvas: {fileID: 0}
+    WinnerPow: {fileID: 0}
+  gameArcadeCanvas: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

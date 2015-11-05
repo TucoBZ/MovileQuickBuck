@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 24f041fe4f9a746dba62ddf402d5a03b
-timeCreated: 1446665058
+timeCreated: 1446729823
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -74,7 +74,7 @@ TextureImporter:
         width: 140
         height: 201
       alignment: 9
-      pivot: {x: .449999988, y: .449999988}
+      pivot: {x: .800000012, y: .850000024}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: sprite_dilma_2
       rect:
@@ -94,7 +94,7 @@ TextureImporter:
         width: 140
         height: 201
       alignment: 9
-      pivot: {x: .550000012, y: .449999988}
+      pivot: {x: .200000003, y: .850000024}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: sprite_dilma_4
       rect:

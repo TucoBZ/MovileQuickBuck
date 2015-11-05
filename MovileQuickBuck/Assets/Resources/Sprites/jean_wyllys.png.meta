@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 827e9686d1e5b41a7ad20a0c7940df98
-timeCreated: 1446351241
+timeCreated: 1446729511
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -73,8 +73,8 @@ TextureImporter:
         y: 358
         width: 75
         height: 126
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .785847962, y: .876755476}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: jean_wyllys_2
       rect:
@@ -93,8 +93,8 @@ TextureImporter:
         y: 358
         width: 76
         height: 126
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .217913181, y: .852448702}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: jean_wyllys_4
       rect:

@@ -63,7 +63,8 @@ public class Powlitico : MonoBehaviour {
 	public PowliticoInfo info;
 
 	public bool updateSkin = false;
-	
+	private Animator animator;
+
 	public void setSkin(){
 		renderers.Head.sprite = sprites.Head;
 		renderers.Body.sprite = sprites.Body;
@@ -71,6 +72,10 @@ public class Powlitico : MonoBehaviour {
 		renderers.HandR.sprite = sprites.HandR;
 		renderers.FootL.sprite = sprites.FootL;
 		renderers.FootR.sprite = sprites.FootR;
+	}
+
+	void Start(){
+		animator = gameObject.GetComponent<Animator> ();
 	}
 
 	#if UNITY_EDITOR
@@ -84,4 +89,8 @@ public class Powlitico : MonoBehaviour {
 	}
 	#endif
 
+	//Animation
+	public void ThrowPie(){
+		animator.SetTrigger("ThrowPie");
+	}
 }

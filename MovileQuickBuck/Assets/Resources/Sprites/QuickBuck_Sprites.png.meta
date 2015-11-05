@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 012d3a8c26d9645e0b3d29a4124877a3
-timeCreated: 1446562907
+timeCreated: 1446729626
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -126,8 +126,8 @@ TextureImporter:
         y: 1507
         width: 74
         height: 125
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .824367225, y: .884050786}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_6
       rect:
@@ -146,8 +146,8 @@ TextureImporter:
         y: 1502
         width: 75
         height: 126
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .168920904, y: .887572289}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: QuickBuck Sprites_8
       rect:
