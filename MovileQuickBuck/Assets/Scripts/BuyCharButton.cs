@@ -18,8 +18,8 @@ public class BuyCharButton : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		buttonImage = this.GetComponent<Image>();
+	void Awake () {
+		buttonImage = gameObject.GetComponent<Image>();
 	}
 
 	public void SelectButton(){

@@ -10,11 +10,13 @@ public class SelectionPanel : MonoBehaviour {
 		for (int i = 0; i < powliticos.Length; i++) {
 		
 			if (powliticos[i].type != CharType.RANDOM){
+				Debug.Log(powliticos[i].type);
 
 				buttons[i].unselectedImage = powliticos[i].sprites.UnselectedHead;
 				buttons[i].selectedImage = powliticos[i].sprites.SelectedHead;
 				buttons[i].buttonType = powliticos[i].type;
 				buttons[i].UnselectButton();
+
 
 			} else {
 				break;
