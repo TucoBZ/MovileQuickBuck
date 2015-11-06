@@ -5,37 +5,250 @@ using UnityEngine.UI;
 using Soomla.Store;
 using System;
 
-public enum CharType {RANDOM, JWYLLYS, JBOLSONARO, DILMA}
-
 public class PowliticosStore : MonoBehaviour {
 
+	/// Painel de seleção de Personagens
 	public SelectionPanel selectionPanel;
 
+	/// Botão de Aleatório
 	public Button randomBT;
+	/// Botão de Refazer
 	public Button undoBT;
+	/// Botão de Confirmar
 	public Button confirmBT;
+	/// Botão de Versus
 	public Button versusBT;
+	/// Aniamador do Botão de Aleatório
 	public Animator versusAnimator;
+	///Texto do Nome do Jogador1
 	public Text p1Name;
+	///Texto do Nome do Jogador2
 	public Text p2Name;
+	///Texto do Modo de Jogo
 	public Text gameMode;
 
-
+	///Pow do Player1
 	public Powlitico pow1;
+	///Pow do Player2
 	public Powlitico pow2;
 
-	public BuyCharButton[] charButtons;
+	///GameController do Jogo
 	private GameController controller;
 
+	///Alerta de Compra que está na tela
 	public PurchaseAlert purchase;
+	///Som de efeito de urna
 	public AudioClip urna;
-	//public AudioClip _mainMusic;
+
 	
 	void Start ()
 	{
+		//PlayerPrefs.DeleteAll ();
+
+		//Ajuste do Controller
+		GameObject gmControl = GameObject.FindGameObjectWithTag ("GameController");
+
+		if (gmControl != null) {
+
+			//Passo Nomes e Pows
+			controller = gmControl.GetComponent<GameController>();
+			controller.player1Name = p1Name;
+			controller.player2Name = p2Name;
+			controller.pow1 = pow1;
+			controller.pow2 = pow2;
+			controller.versusBT = versusBT;
+			controller.ResetGame ();
+
+			if (controller.isInArcadeMode()) {
+				gameMode.text = "Arcade";	
+			} else {
+				gameMode.text = "Multiplayer";
+			}
+
+			//Seta os botões da tela de seleção
+			selectionPanel.SetButtonsWithPowliticosArray (controller.powliticos);
+
+		}
+
+		StartStoreEvents();
 		
-		//ShowStore (0);
+	}
+
+	void Update(){
+
+		if (controller != null) {
+			if (controller.isReady()) {
+				SetAllButtonsInteractable(false);
+				versusAnimator.SetBool("ready",true);
+			} else if (versusAnimator.GetBool("ready")){
+				versusAnimator.SetBool("ready",false);
+			}
+		}
+	}
+
+	///Seleciona Visualmente o botão de Seleção
+	private void SelectButton(int index){
+
+		selectionPanel.UnselectAllButtons();
+		selectionPanel.buttons[index].SelectButton();
+
+		SetAllButtonsInteractable (true);
+
+		SelectCharInController(selectionPanel.buttons[index].buttonType);
+
+	}
+
+	///Seleciona no Controler o personagem dado o tipo dele
+	private void SelectCharInController(CharType type){
+
+		controller.changePlayerSelection(type);
+	
+	}
+
+	///Ação do botão de Aleatório
+	public void RandomBT(){
+
+		selectionPanel.UnselectAllButtons();
+		controller.NullConfirm ();
+		if (!controller.isInArcadeMode ()) {
+			controller.PlaySoundEffect(urna, 0.6f);
+		}
+	}
+
+	///Ação do botão de Corrige
+	public void CancelBT(){
+
+		controller.UndoSelection ();
+		SetAllButtonsInteractable(true);
+
+	}
+
+	///Ação do botão de Confirma
+	public void ConfirmBT(){
+
+		controller.ConfirmSelection();
+		selectionPanel.UnselectAllButtons();
+		if (!controller.isInArcadeMode ()) {
+			controller.PlaySoundEffect(urna, 0.6f);
+		}
+
+	}
+
+	///Ação do botão de Back
+	public void Back(){
+
+		Application.LoadLevel(0);
+
+	}
+
+	///Ação do botão de Versus
+	public void StartVS(){
+
+		if (controller != null) {
+			if(controller.isInArcadeMode()){
+				controller.CheckRandom();
+				Application.LoadLevel(3);
+			}else{
+				controller.CheckRandom();
+				Application.LoadLevel(2);
+			}
+
+		}
 		
+	}
+
+	///Ação dos botões de Seleção
+	public void BuyChar (int index)
+	{
+
+		SetAllButtonsInteractable (false);
+
+		CharType buttonType = selectionPanel.buttons [index].buttonType; 
+
+		if (buttonType != CharType.RANDOM) {
+
+			//Pego o Pow referente a este indice de botão
+			Powlitico powButton = controller.powliticos [index];
+
+			//Verifico se existe este personagem para compra
+			if (StoreInventory.GetItemBalance (powButton.storeValues.PRODUCT_ID) > 0) {
+
+				//Seleciono este personagem
+				SelectButton(index);
+				
+			} else {
+
+				//Senão subo alerta de compra
+				LoadAlertPurchase (buttonType);
+			}	
+
+		} else {
+
+			SelectButton(index);
+
+		}
+	}
+
+	///Ação de compra executada pelo botão Comprar
+	public IEnumerator buyChar(CharType type){
+
+		Powlitico pow = controller.powliticoForCharType(type);
+
+		try{
+
+			//Tento comprar o personagem 
+			StoreInventory.BuyItem (pow.storeValues.PRODUCT_ID);
+
+		}catch (Exception e) {
+
+			if (purchase)
+				purchase.CloseWindow();
+
+			Debug.Log ("unity/soomla:" + e.Message);
+		}
+		yield return null;
+	}
+
+	///Seta todos os botões de seleção para ativos ou inativos
+	private void SetAllButtonsInteractable (bool interactable)
+	{
+		selectionPanel.SetAllButtonsInteractable(interactable);
+	}
+
+	///Abre Alert de compra, senão tiver Internet Abre alert de Conexão
+	private void LoadAlertPurchase(CharType type){
+
+		if (Application.internetReachability != NetworkReachability.NotReachable) {
+
+			GameObject req = Resources.Load<GameObject> ("Prefabs/AlertPurchase_Canvas");
+			GameObject inst = Instantiate (req as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
+			purchase = inst.GetComponent<PurchaseAlert>();
+			purchase.purchase = buyChar(type);
+			SetAllButtonsInteractable (true);
+
+		} else {
+
+			LoadAlertConnection();
+
+		}
+		
+	}
+
+	///Abre alert de Conexão
+	private void LoadAlertConnection(){
+
+		GameObject req = Resources.Load<GameObject> ("Prefabs/AlertInternet_Canvas");
+		Instantiate (req as GameObject, Vector3.zero, Quaternion.identity);
+		SetAllButtonsInteractable (true);
+	
+	}
+
+
+//Soomla ------------------------------------------------------------------------------------------------------
+
+	/// Inicializa os Eventos do Soomla e Inicializa o SoomlaStore
+	private void StartStoreEvents(){
+
 		StoreEvents.OnSoomlaStoreInitialized 		+= OnSoomlaStoreInitialized;
 		StoreEvents.OnItemPurchased 				+= OnItemPurchased;
 		StoreEvents.OnCurrencyBalanceChanged 		+= onCurrencyBalanceChanged;
@@ -56,238 +269,13 @@ public class PowliticosStore : MonoBehaviour {
 		StoreEvents.OnGoodUpgrade 					+= onGoodUpgrade;
 		StoreEvents.OnBillingSupported 				+= onBillingSupported;
 		StoreEvents.OnBillingNotSupported 			+= onBillingNotSupported;
-		
-
-		//PlayerPrefs.DeleteAll ();
-		//Ajuste do Controller
-		GameObject gmControl = GameObject.FindGameObjectWithTag ("GameController");
-
-		if (gmControl != null) {
-			controller = gmControl.GetComponent<GameController>();
-			controller.player1Name = p1Name;
-			controller.player2Name = p2Name;
-			controller.pow1 = pow1;
-			controller.pow2 = pow2;
-			controller.versusBT = versusBT;
-			controller.ResetGame ();
-
-			if (controller.isInArcadeMode()) {
-				gameMode.text = "Arcade";	
-			} else {
-				gameMode.text = "Multiplayer";
-			}
-
-			//Seta os botões da tela de seleção
-			selectionPanel.SetButtonsWithPowliticosArray (controller.powliticos);
-
-		}
-
-
 
 		if (!SoomlaStore.Initialized)
-			SoomlaStore.Initialize (new PowliticosStoreAssets ());
+			SoomlaStore.Initialize (new PowliticosStoreAssets(controller.AllVirtualGoods(),controller.powliticos.Length));
 		else
 			OnSoomlaStoreInitialized ();
-		
-		//AudioManager.GetInstance ().PlayMusicWithPriority1 (_beachSound, 0.8f);
-		//AudioManager.GetInstance ().PlayMusicWithPriority2 (_mainMusic, 0.3f);
-		
-	}
-
-	void Update(){
-
-		if (controller != null) {
-			if (controller.isReady ()) {
-				SetAllButtonsInteractable(false);
-				versusAnimator.SetBool("ready",true);
-			} else if (versusAnimator.GetBool("ready")){
-				versusAnimator.SetBool("ready",false);
-			}
-
-			
-		}
-	
-	}
-
-	private void SelectButton(int index){
-
-		selectionPanel.UnselectAllButtons();
-		selectionPanel.buttons[index].SelectButton();
-
-		SetAllButtonsInteractable (true);
-
-		SelectCharInController(selectionPanel.buttons[index].buttonType);
 
 	}
-
-	private void SelectCharInController(CharType type){
-
-		controller.changePlayerSelection(type);
-	
-	}
-
-
-	public void RandomBT(){
-
-		selectionPanel.UnselectAllButtons();
-		controller.NullConfirm ();
-		if (!controller.isInArcadeMode ()) {
-			controller.PlaySoundEffect(urna, 0.6f);
-		}
-	}
-
-	public void CancelBT(){
-
-		controller.UndoSelection ();
-		SetAllButtonsInteractable(true);
-
-	}
-
-	public void ConfirmBT(){
-
-		controller.ConfirmSelection();
-		selectionPanel.UnselectAllButtons();
-		if (!controller.isInArcadeMode ()) {
-			controller.PlaySoundEffect(urna, 0.6f);
-		}
-
-	}
-
-	public void Back(){
-
-		Application.LoadLevel(0);
-
-	}
-
-	public void StartVS(){
-
-		if (controller != null) {
-			if(controller.isInArcadeMode()){
-				controller.CheckRandom();
-				Application.LoadLevel(3);
-			}else{
-				controller.CheckRandom();
-				Application.LoadLevel(2);
-			}
-
-		}
-		
-	}
-
-	
-	public void BuyChar (int index)
-	{
-
-		SetAllButtonsInteractable (false);
-
-		switch (selectionPanel.buttons[index].buttonType) {
-		case CharType.RANDOM:
-
-			SelectButton(index);
-
-			break;
-		case CharType.JWYLLYS:
-			if (StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID) > 0){
-				//Select this char
-				SelectButton(index);
-				
-			}else{
-				
-				LoadAlertPurchase(CharType.JWYLLYS);
-			}							
-			break;
-		case CharType.JBOLSONARO:
-			if (StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID) > 0){
-				//Select this char
-				SelectButton(index);
-				
-			}else{
-				
-				LoadAlertPurchase(CharType.JBOLSONARO);
-			}
-			break;
-		case CharType.DILMA:
-			if (StoreInventory.GetItemBalance(PowliticosStoreAssets.CHAR_DILMA_ID) > 0){
-				//Select this char
-				SelectButton(index);
-				
-			}else{
-				
-				LoadAlertPurchase(CharType.DILMA);
-			}							
-			break;
-		default:
-			
-			break;
-
-		}
-
-	}
-	
-	public IEnumerator buyChar(CharType type){
-		try {
-			
-			switch (type) {
-			case CharType.JWYLLYS:
-
-				StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JEAN_WYLLYS_ID);
-				
-				break;
-			case CharType.JBOLSONARO:
-
-				StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_JAIR_BOLSONARO_ID);
-
-				break;
-			case CharType.DILMA:
-				
-				StoreInventory.BuyItem (PowliticosStoreAssets.CHAR_DILMA_ID);
-				
-				break;
-			default:
-				break;
-				
-			}
-		} catch (Exception e) {
-			
-			//_loadingScreen.DestroyThisLoading();
-			Debug.Log ("unity/soomla:" + e.Message);
-		}
-		yield return null;
-	}
-
-	private void SetAllButtonsInteractable (bool interactable)
-	{
-		selectionPanel.SetAllButtonsInteractable(interactable);
-	}
-
-	private void LoadAlertPurchase(CharType type){
-
-		if (Application.internetReachability != NetworkReachability.NotReachable) {
-
-			GameObject req = Resources.Load<GameObject> ("Prefabs/AlertPurchase_Canvas");
-			GameObject inst = Instantiate (req as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
-			purchase = inst.GetComponent<PurchaseAlert> ();
-			purchase.purchase = buyChar (type);
-			SetAllButtonsInteractable (true);
-
-		} else {
-
-			LoadAlertConnection();
-
-		}
-		
-	}
-	
-	private void LoadAlertConnection(){
-
-		GameObject req = Resources.Load<GameObject> ("Prefabs/AlertInternet_Canvas");
-		Instantiate (req as GameObject, Vector3.zero, Quaternion.identity);
-		SetAllButtonsInteractable (true);
-	
-	}
-
-
-//Soomla ------------------------------------------------------------------------------------------------------
 
 	private void OnSoomlaStoreInitialized ()
 	{

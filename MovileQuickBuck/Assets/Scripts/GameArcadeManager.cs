@@ -236,6 +236,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			controller.powWinner = winnerMenu.WinnerPow;
 			controller.SetPowliticoWinner(controller.player1);
 			winnerMenu.WinnerPow = controller.powWinner;
+
 			winnerMenu.SetWinnerMenuAble(true);
 			AbleGame(false);
 

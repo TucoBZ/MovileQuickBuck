@@ -4,18 +4,25 @@ using UnityEngine.UI;
 
 public class SelectPolitico : MonoBehaviour {
 
-
+	///Texto de Nome
 	public Text nametx;
+	///Texto do Partido
 	public Text partido;
+	///Texto do Twitter
 	public Text twitter;
+	///Texto de Descrição
 	public Text descricao;
-	public Powlitico powlitico;
-	public SelectionPanel selectionPanel;
 
+	///Powlitico apresentado
+	public Powlitico powlitico;
+	///Painel de seleção de personagens
+	public SelectionPanel selectionPanel;
+	///Game controller
 	private GameController controller;
 
 	public void Start(){
 
+		//Pego o gameController
 		GameObject gmControl = GameObject.FindGameObjectWithTag ("GameController");
 		
 		if (gmControl != null) {
@@ -30,10 +37,12 @@ public class SelectPolitico : MonoBehaviour {
 
 	}
 
+	///Ação do Botão de voltar
 	public void back(){
 		Application.LoadLevel (0);	
 	}
 
+	///Seleciono o Char dado o índice dele
 	public void SelectChar (int index)
 	{
 		//Se o indice do botão precionado for diferente de Random então

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Soomla.Store;
 
+//Sprites usadas no personagem
 [System.Serializable]
 public class PowliticoSprites {
 	public Sprite SelectedHead;
@@ -16,6 +17,7 @@ public class PowliticoSprites {
 	public Sprite HandR;
 }
 
+//Peças do personagem
 [System.Serializable]
 public class PowliticoSpriteRenderer {
 	public SpriteRenderer Head;
@@ -26,6 +28,7 @@ public class PowliticoSpriteRenderer {
 	public SpriteRenderer HandR;
 }
 
+//Informações de compra do personagem
 [System.Serializable]
 public class PowliticoStoreValues {
 	public string PRODUCT_ID;
@@ -33,7 +36,7 @@ public class PowliticoStoreValues {
 	public string Description;
 	public double Value;
 
-
+	///Produto Virtual deste Personagem, usado no Soomla
 	public  VirtualGood PowliticoVirtualProduct (){
 		return new LifetimeVG(
 			Name, 										// name
@@ -44,7 +47,7 @@ public class PowliticoStoreValues {
 
 }
 
-
+//Informações do personagem
 [System.Serializable]
 public class PowliticoInfo {
 	public string Nome;
@@ -53,13 +56,21 @@ public class PowliticoInfo {
 	public string Description;
 }
 
+//Enum de tipos de personagens
+public enum CharType {RANDOM, JWYLLYS, JBOLSONARO, DILMA}
+
 [ExecuteInEditMode]
 public class Powlitico : MonoBehaviour {
 
+	///O Tipo deste personagem
 	public CharType type;
+	///Sprites deste personagem
 	public PowliticoSprites sprites;
+	///Peças deste personagem (não precisa alterar)
 	public PowliticoSpriteRenderer renderers;
+	///Valores necessário para o Soomla
 	public PowliticoStoreValues storeValues;
+	///Info deste Personagem
 	public PowliticoInfo info;
 
 	public bool updateSkin = false;

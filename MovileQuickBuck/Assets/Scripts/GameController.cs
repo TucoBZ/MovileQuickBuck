@@ -2,31 +2,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Soomla.Store;
 
 public enum GameMode {ARCADE, MULTIPLAYER}
 public enum GameSelection {P1_CONFIRM, P2_CONFIRM, READY}
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour{
 
+	///Modo de Jogo
 	public GameMode mode = GameMode.ARCADE;
 
+	///Tipo do personagem do Player1
 	public CharType player1 = CharType.RANDOM; 
+	///Tipo do personagem do Player2
 	public CharType player2 = CharType.RANDOM; 
 
+	///Array de todos os Powliticos
 	public Powlitico[] powliticos;
+
+	///Texto que será apresentado o Nome do Personagem do P1
 	public Text player1Name;
+	///Texto que será apresentado o Nome do Personagem do P2
 	public Text player2Name;
 
+	///Objeto que representa o P1
 	public Powlitico pow1;
+	///Objeto que representa o P2
 	public Powlitico pow2;
+	///Objeto que representa o Jogador Vencedor, usado tbm na tela de Informações
 	public Powlitico powWinner;
 
-
+	///Fonte de audio de Background
 	public AudioSource bgmusic;
+	///Fonte de audio de efeitos
 	public AudioSource effect;
 
+	///Botão de Versus (Rever isso aqui)
 	public Button versusBT;
 
+	///Máquina de estados de seleção de personagem
 	private GameSelection selectStatus = GameSelection.P1_CONFIRM;
 
 	///Instancia do Singleton
@@ -45,11 +59,12 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	///Instância atual do GameController
 	public GameController GetInstance (){
 		return sharedInstance;
 	}
 
-
+	///Reseta as escolhas e a Máq. de Estados do Jogo
 	public void ResetGame(){
 
 		player1 = CharType.RANDOM; 
@@ -64,12 +79,16 @@ public class GameController : MonoBehaviour {
 		selectStatus = GameSelection.P1_CONFIRM;
 	}
 
+	///Toca um som de efeito, possível passar em que posição o som precisa começar a tocar
 	public void PlaySoundEffect(AudioClip clip, float offset){
 		effect.clip = clip;
 		effect.time = offset;
 		effect.Play();
 	}
 
+	///Substitui Pow1 e Pow2 pelos tipos indicados em player1 e player2.
+	///OBS: Ao usar essa função você perderá a referência dos Powliticos de Pow1 e Pow2 da sua classe
+	/// , favor pegar a referência novamente de pow1 e pow2 desta classe.
 	public void SetPowlitico(){
 		
 		if ((pow1 != null) && (pow2 != null)) {
@@ -92,6 +111,9 @@ public class GameController : MonoBehaviour {
 		
 	}
 
+	///Substitui PowWinner pelo tipo indicado.
+	///OBS: Ao usar essa função você perderá a referência do Powlitico de da sua classe
+	/// , favor pegar a referência novamente de powWinner desta classe.
 	public void SetPowliticoWinner(CharType type){
 		
 		if (powWinner != null) {
@@ -107,41 +129,32 @@ public class GameController : MonoBehaviour {
 		}
 		
 	}
-	public CharType RandomCharType(){
 
-		int range = Random.Range(0, 20);
-		range = range % 3;
-		range++;	
-		Debug.Log (range);
-		CharType character = CharType.RANDOM;
-
-		switch (range) {
-		case (int)CharType.JWYLLYS:
-			character = CharType.JWYLLYS;
-			break;
-		case (int)CharType.JBOLSONARO:
-			character = CharType.JBOLSONARO;
-			break;
-		case (int)CharType.DILMA:
-			character = CharType.DILMA;
-			break;
-		default:
-			break;
-		}
-
-		return character;
-	}
-	
+	///Verifica se player1 e player2 são do tipo Random, tocando por personagens jogáveis diferentes
 	public void CheckRandom(){
+
+		//Escolho o Player1 caso Random
 		if (player1 == CharType.RANDOM) {
 			player1 = RandomCharType();
 		}
-		if (player2 == CharType.RANDOM) {
-			player2 = RandomCharType();
 
+		//Escolho o player2 caso Random ou igual ao player1 e verifico novamente
+		if (player2 == CharType.RANDOM || player1 == player2) {
+			player2 = RandomCharType();
+			CheckRandom();
 		}
 	}
 
+	///Devolve um personagem jogável aleatório
+	public CharType RandomCharType(){
+		
+		int range = Random.Range(0, 20);
+		range = range % (powliticos.Length-1);
+		
+		return powliticos[range].type;
+	}
+
+	///Seta o texto dos nomes, e relouda os Powliticos
 	public void SetName(){
 	
 		if ((player1Name != null) && (player2Name != null)) {
@@ -152,6 +165,7 @@ public class GameController : MonoBehaviour {
 
 	}
 
+	///Troca a Seleção do tipo do personagem, verificando o estado atual da máquina
 	public void changePlayerSelection(CharType type){
 		if (isInArcadeMode()) {
 			switch (selectStatus) {
@@ -187,10 +201,9 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public string CharName(CharType type){
-		return powliticoForCharType(type).info.Nome;
-	}
 
+
+	/// Volta um Estado da máquina, desfazendo a seleção do personagem
 	public void UndoSelection(){
 
 		if (isInArcadeMode ()) {
@@ -220,11 +233,13 @@ public class GameController : MonoBehaviour {
 
 	}
 
+	///Confirma a Seleção de Personagem Aleatório, passando para o próximo passo da Máquina
 	public void NullConfirm(){
 		changePlayerSelection (CharType.RANDOM);
 		ConfirmSelection();
 	}
 
+	///Confirma a Seleção de Personagem, passando para o próximo passo da Máquina
 	public void ConfirmSelection(){
 
 		if (isInArcadeMode()) {
@@ -253,14 +268,22 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	///Verifica se o jogo está no modo Arcade
 	public bool isInArcadeMode(){
 		return (mode == GameMode.ARCADE) ? true : false;
 	}
 
+	///Verifica se o jogo está em Ready
 	public bool isReady(){
 		return (selectStatus == GameSelection.READY) ? true : false;
 	}
 
+	///Devolve o Nome Real do Personagem tirando da Info do Powlitico
+	public string CharName(CharType type){
+		return powliticoForCharType(type).info.Nome;
+	}
+
+	///Devolve um Powlitico dado o tipo dele
 	public Powlitico powliticoForCharType(CharType type){
 
 		Powlitico powlitico = null;
@@ -275,4 +298,22 @@ public class GameController : MonoBehaviour {
 
 		return powlitico;
 	}
+
+	public VirtualGood[] AllVirtualGoods()
+	{
+		VirtualGood[] goods = new VirtualGood[powliticos.Length-1];
+
+		for (int i = 0; i < powliticos.Length-1; i++) {
+			goods[i] = powliticos[i].storeValues.PowliticoVirtualProduct();
+		}
+
+		return goods;
+	}
+
+//	public VirtualGood[] AllPowliticosGoods{
+//		return new VirtualGood[]{powliticos.};
+//	}
+
+
+	
 }

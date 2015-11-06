@@ -685,7 +685,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 407494, guid: 6a45708ae970f49d5b277cbfb458a139, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.82999992
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 407494, guid: 6a45708ae970f49d5b277cbfb458a139, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2237,7 +2237,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 407494, guid: 6a45708ae970f49d5b277cbfb458a139, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.86999989
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 407494, guid: 6a45708ae970f49d5b277cbfb458a139, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2935,7 +2935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .39199999}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3279,6 +3279,5 @@ MonoBehaviour:
   gameMode: {fileID: 445082708}
   pow1: {fileID: 721638954}
   pow2: {fileID: 1765934560}
-  charButtons: []
   purchase: {fileID: 0}
   urna: {fileID: 8300000, guid: 84eab67b86123494788e8320d1626214, type: 3}
