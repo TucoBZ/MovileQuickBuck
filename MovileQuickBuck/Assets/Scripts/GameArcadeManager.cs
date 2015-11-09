@@ -78,6 +78,9 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 	//Paineis com os menus
 	public GameObject gameArcadeCanvas;
 
+	///Classe de Ads
+	private PowliticosADS ads;
+
 
 	// Use this for initialization
 	void Start () {
@@ -102,7 +105,8 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		_gestureBang.AddListener (this);
 		
 		ChangeStateTo (GameState.Default);
-		
+
+		ads = new PowliticosADS();
 	}
 	
 	// Update is called once per frame
@@ -121,6 +125,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 
 		if (_gameState == GameState.Ready) {
 			_playerDownError = true;
+			pow1.Fail();
 			return;
 		}
 
@@ -280,12 +285,12 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 
 		yield return new WaitForSeconds (timePow);
 		
-		_textCenter.gameObject.SetActive (true);
+		_textCenter.gameObject.SetActive (false);
 		
-		_textCenter.text = "POW!";
-
+		//_textCenter.text = "POW!";
+		
 		powImage.SetActive (true);
-		_textCenter.color = Color.white;
+		//_textCenter.color = Color.white;
 		
 		ChangeStateTo (GameState.OnGame);
 
@@ -414,12 +419,18 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		ResetScore ();
 		ShowDownMenu ();
 		ChangeStateTo (GameState.Default);
-		
-		
+			
 	}
+
+	public void PlayAgain(){
+
+		ads.ShowAd();
+		ResetGame();
+	}
+
 	
 	public void MainMenu(){
-		
+
 		Application.LoadLevel (0);
 	}
 

@@ -310,10 +310,6 @@ public class GameController : MonoBehaviour{
 		return goods;
 	}
 
-//	public VirtualGood[] AllPowliticosGoods{
-//		return new VirtualGood[]{powliticos.};
-//	}
-
 
 	
 }

@@ -57,7 +57,11 @@ public class PowliticoInfo {
 }
 
 //Enum de tipos de personagens
-public enum CharType {RANDOM, JWYLLYS, JBOLSONARO, DILMA}
+public enum CharType {RANDOM, JWYLLYS, JBOLSONARO, DILMA, ECUNHA}
+
+
+//Enum de tipos de personagens
+public enum PurchaseType {UNLOCKED, ADS, PURCHASE}
 
 [ExecuteInEditMode]
 public class Powlitico : MonoBehaviour {
@@ -72,6 +76,8 @@ public class Powlitico : MonoBehaviour {
 	public PowliticoStoreValues storeValues;
 	///Info deste Personagem
 	public PowliticoInfo info;
+
+	public PurchaseType purchaseType;
 
 	public bool updateSkin = false;
 	private Animator animator;
@@ -104,4 +110,13 @@ public class Powlitico : MonoBehaviour {
 	public void ThrowPie(){
 		animator.SetTrigger("ThrowPie");
 	}
+
+	public void Fail(){
+		animator.SetBool("Fail",true);
+	}
+
+	public void ResetFail(){
+		animator.SetBool("Fail",false);
+	}
+
 }

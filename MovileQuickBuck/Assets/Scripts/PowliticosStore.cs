@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Soomla.Store;
 using System;
+using UnityEngine.Advertisements;
 
 public class PowliticosStore : MonoBehaviour {
 
@@ -40,7 +41,8 @@ public class PowliticosStore : MonoBehaviour {
 	///Som de efeito de urna
 	public AudioClip urna;
 
-	
+	private CharType charTypeADS;
+
 	void Start ()
 	{
 		//PlayerPrefs.DeleteAll ();
@@ -152,9 +154,7 @@ public class PowliticosStore : MonoBehaviour {
 				controller.CheckRandom();
 				Application.LoadLevel(2);
 			}
-
 		}
-		
 	}
 
 	///Ação dos botões de Seleção
@@ -163,23 +163,31 @@ public class PowliticosStore : MonoBehaviour {
 
 		SetAllButtonsInteractable (false);
 
-		CharType buttonType = selectionPanel.buttons [index].buttonType; 
+		CharType buttonType = selectionPanel.buttons[index].buttonType; 
 
+		//Caso Diferente de Random verifico se tenho o Pow
 		if (buttonType != CharType.RANDOM) {
 
 			//Pego o Pow referente a este indice de botão
-			Powlitico powButton = controller.powliticos [index];
+			Powlitico powButton = controller.powliticos[index];
 
-			//Verifico se existe este personagem para compra
-			if (StoreInventory.GetItemBalance (powButton.storeValues.PRODUCT_ID) > 0) {
+			//Verifico se tenho este personagem para compra ou se ele já é desbloqueado
+			if (StoreInventory.GetItemBalance (powButton.storeValues.PRODUCT_ID) > 0 || powButton.purchaseType == PurchaseType.UNLOCKED) {
 
 				//Seleciono este personagem
 				SelectButton(index);
 				
 			} else {
 
-				//Senão subo alerta de compra
-				LoadAlertPurchase (buttonType);
+				if (powButton.purchaseType == PurchaseType.ADS){
+					//Caso seja desbloqueado por ADS
+					LoadADSAlertPurchase(buttonType);
+
+				}else{
+					//Senão subo alerta de compra
+					LoadAlertPurchase (buttonType);
+				}
+
 			}	
 
 		} else {
@@ -187,6 +195,8 @@ public class PowliticosStore : MonoBehaviour {
 			SelectButton(index);
 
 		}
+
+		//SelectButton(index);
 	}
 
 	///Ação de compra executada pelo botão Comprar
@@ -206,6 +216,15 @@ public class PowliticosStore : MonoBehaviour {
 
 			Debug.Log ("unity/soomla:" + e.Message);
 		}
+		yield return null;
+	}
+
+	///Ação de compra executada pelo botão ADS
+	public IEnumerator ADSChar(CharType type){
+
+		charTypeADS = type;
+		ShowRewardedAd ();
+
 		yield return null;
 	}
 
@@ -234,6 +253,25 @@ public class PowliticosStore : MonoBehaviour {
 		
 	}
 
+	///Abre Alert de compra de AD, senão tiver Internet Abre alert de Conexão
+	private void LoadADSAlertPurchase(CharType type){
+		
+		if (Application.internetReachability != NetworkReachability.NotReachable) {
+			
+			GameObject req = Resources.Load<GameObject> ("Prefabs/AlertADSPurchase_Canvas");
+			GameObject inst = Instantiate (req as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
+			purchase = inst.GetComponent<PurchaseAlert>();
+			purchase.purchase = ADSChar(type);
+			SetAllButtonsInteractable (true);
+			
+		} else {
+			
+			LoadAlertConnection();
+			
+		}
+		
+	}
+
 	///Abre alert de Conexão
 	private void LoadAlertConnection(){
 
@@ -243,6 +281,47 @@ public class PowliticosStore : MonoBehaviour {
 	
 	}
 
+//ADS------------------------------------------------------------------------------------------------------
+
+	public void ShowAd()
+	{
+		if (Advertisement.IsReady())
+		{
+			Advertisement.Show();
+		}
+	}
+	
+	public void ShowRewardedAd()
+	{
+		if (Advertisement.IsReady("rewardedVideo"))
+		{
+			var options = new ShowOptions { resultCallback = HandleShowResult };
+			Advertisement.Show("rewardedVideo", options);
+		}
+	}
+	
+	private void HandleShowResult(ShowResult result)
+	{
+		switch (result)
+		{
+		case ShowResult.Finished:
+			Debug.Log("The ad was successfully shown.");
+			//
+			// YOUR CODE TO REWARD THE GAMER
+			// Give coins etc.
+			Powlitico pow = controller.powliticoForCharType(charTypeADS);
+			StoreInventory.GiveItem(pow.storeValues.PRODUCT_ID,1);
+			purchase.CloseWindow();
+			break;
+		case ShowResult.Skipped:
+			Debug.Log("The ad was skipped before reaching the end.");
+			
+			break;
+		case ShowResult.Failed:
+			Debug.LogError("The ad failed to be shown.");
+			break;
+		}
+	}
 
 //Soomla ------------------------------------------------------------------------------------------------------
 
