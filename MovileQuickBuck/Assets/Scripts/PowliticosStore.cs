@@ -45,7 +45,7 @@ public class PowliticosStore : MonoBehaviour {
 
 	void Start ()
 	{
-		//PlayerPrefs.DeleteAll ();
+		PlayerPrefs.DeleteAll ();
 
 		//Ajuste do Controller
 		GameObject gmControl = GameObject.FindGameObjectWithTag ("GameController");
@@ -202,19 +202,28 @@ public class PowliticosStore : MonoBehaviour {
 	///Ação de compra executada pelo botão Comprar
 	public IEnumerator buyChar(CharType type){
 
-		Powlitico pow = controller.powliticoForCharType(type);
+		if (Application.internetReachability != NetworkReachability.NotReachable) {
 
-		try{
+			Powlitico pow = controller.powliticoForCharType(type);
+			
+			try{
+				
+				//Tento comprar o personagem 
+				StoreInventory.BuyItem (pow.storeValues.PRODUCT_ID);
+				
+			}catch (Exception e) {
+				
+				if (purchase)
+					purchase.CloseWindow();
+				
+				Debug.Log ("unity/soomla:" + e.Message);
+			}
+		
+		} else {
 
-			//Tento comprar o personagem 
-			StoreInventory.BuyItem (pow.storeValues.PRODUCT_ID);
-
-		}catch (Exception e) {
-
-			if (purchase)
-				purchase.CloseWindow();
-
-			Debug.Log ("unity/soomla:" + e.Message);
+			purchase.CloseWindow();
+			LoadAlertConnection();
+			
 		}
 		yield return null;
 	}
@@ -222,8 +231,17 @@ public class PowliticosStore : MonoBehaviour {
 	///Ação de compra executada pelo botão ADS
 	public IEnumerator ADSChar(CharType type){
 
-		charTypeADS = type;
-		ShowRewardedAd ();
+		if (Application.internetReachability != NetworkReachability.NotReachable) {
+			
+			charTypeADS = type;
+			ShowRewardedAd ();
+			
+		} else {
+
+			purchase.CloseWindow();
+			LoadAlertConnection();
+		}
+
 
 		yield return null;
 	}
@@ -237,38 +255,22 @@ public class PowliticosStore : MonoBehaviour {
 	///Abre Alert de compra, senão tiver Internet Abre alert de Conexão
 	private void LoadAlertPurchase(CharType type){
 
-		if (Application.internetReachability != NetworkReachability.NotReachable) {
-
-			GameObject req = Resources.Load<GameObject> ("Prefabs/AlertPurchase_Canvas");
-			GameObject inst = Instantiate (req as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
-			purchase = inst.GetComponent<PurchaseAlert>();
-			purchase.purchase = buyChar(type);
-			SetAllButtonsInteractable (true);
-
-		} else {
-
-			LoadAlertConnection();
-
-		}
+		GameObject req = Resources.Load<GameObject> ("Prefabs/AlertPurchase_Canvas");
+		GameObject inst = Instantiate (req as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
+		purchase = inst.GetComponent<PurchaseAlert>();
+		purchase.purchase = buyChar(type);
+		SetAllButtonsInteractable (true);
 		
 	}
 
 	///Abre Alert de compra de AD, senão tiver Internet Abre alert de Conexão
 	private void LoadADSAlertPurchase(CharType type){
-		
-		if (Application.internetReachability != NetworkReachability.NotReachable) {
-			
-			GameObject req = Resources.Load<GameObject> ("Prefabs/AlertADSPurchase_Canvas");
-			GameObject inst = Instantiate (req as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
-			purchase = inst.GetComponent<PurchaseAlert>();
-			purchase.purchase = ADSChar(type);
-			SetAllButtonsInteractable (true);
-			
-		} else {
-			
-			LoadAlertConnection();
-			
-		}
+
+		GameObject req = Resources.Load<GameObject> ("Prefabs/AlertADSPurchase_Canvas");
+		GameObject inst = Instantiate (req as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
+		purchase = inst.GetComponent<PurchaseAlert>();
+		purchase.purchase = ADSChar(type);
+		SetAllButtonsInteractable (true);
 		
 	}
 

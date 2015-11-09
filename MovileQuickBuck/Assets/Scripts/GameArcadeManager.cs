@@ -126,6 +126,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		if (_gameState == GameState.Ready) {
 			_playerDownError = true;
 			pow1.Fail();
+			DownHitPie();
 			return;
 		}
 
@@ -335,8 +336,6 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		UpHitPie ();
 		
 		yield return new WaitForSeconds (1.3f);
-		
-		//DownHettedHead ();
 
 		powImage.SetActive (false);
 		_textCenter.color = Color.black;
@@ -357,8 +356,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		DownHitPie ();
 		
 		yield return new WaitForSeconds (1.3f);
-		
-		//UpHettedHead ();
+
 
 		powImage.SetActive (false);
 		_textCenter.color = Color.black;
