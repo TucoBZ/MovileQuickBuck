@@ -488,7 +488,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 	public void MainMenu(){
 
-		Application.LoadLevel (0);
+		Application.LoadLevel ((int)Scenes.MainMenu);
 	}
 
 	private void UpHitPie(){

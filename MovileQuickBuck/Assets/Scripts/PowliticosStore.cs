@@ -139,7 +139,7 @@ public class PowliticosStore : MonoBehaviour {
 	///Ação do botão de Back
 	public void Back(){
 
-		Application.LoadLevel(0);
+		Application.LoadLevel((int)Scenes.MainMenu);
 
 	}
 
@@ -149,10 +149,10 @@ public class PowliticosStore : MonoBehaviour {
 		if (controller != null) {
 			if(controller.isInArcadeMode()){
 				controller.CheckRandom();
-				Application.LoadLevel(3);
+				Application.LoadLevel((int)Scenes.Arcade);
 			}else{
 				controller.CheckRandom();
-				Application.LoadLevel(2);
+				Application.LoadLevel((int)Scenes.Multiplayer);
 			}
 		}
 	}

@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum Scenes {SplashScreen, MainMenu, CharSelection, Multiplayer, Arcade, Credits, PowliticosInfo}
+
 public class SplashScreen : MonoBehaviour {
 	
 	void Start () {
@@ -10,7 +12,7 @@ public class SplashScreen : MonoBehaviour {
 	
 	IEnumerator WaitToDestroy(float time) {
 		yield return new WaitForSeconds(time);
-		Destroy (gameObject);	
+		Application.LoadLevel((int)Scenes.MainMenu);
 	}
 
 }

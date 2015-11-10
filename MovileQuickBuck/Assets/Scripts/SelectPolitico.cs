@@ -39,7 +39,7 @@ public class SelectPolitico : MonoBehaviour {
 
 	///Ação do Botão de voltar
 	public void back(){
-		Application.LoadLevel (0);	
+		Application.LoadLevel ((int)Scenes.MainMenu);	
 	}
 
 	///Seleciono o Char dado o índice dele
