@@ -295,7 +295,7 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 		
 		ChangeStateTo (GameState.OnGame);
 
-		float timeComp = Random.Range (0.4F, 1F);
+		float timeComp = Random.Range (0.25F, 0.55F); //Tempo de resposta do Adversário
 
 		yield return new WaitForSeconds (timeComp);
 
