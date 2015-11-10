@@ -143,5 +143,7 @@ public class Powlitico : MonoBehaviour {
 		}
 	}
 
-	public void PlaySpeech(){}
+	public void PlaySpeech(){
+		AudioControl.GetInstance ().PlaySoundEffect (speechEffect, 0f);
+	}
 }

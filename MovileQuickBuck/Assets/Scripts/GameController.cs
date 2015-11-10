@@ -114,6 +114,8 @@ public class GameController : MonoBehaviour{
 			Destroy(powWinner.gameObject);
 			powWinner = newPow.GetComponent<Powlitico>();
 
+			powWinner.PlaySpeech();
+
 		}
 		
 	}

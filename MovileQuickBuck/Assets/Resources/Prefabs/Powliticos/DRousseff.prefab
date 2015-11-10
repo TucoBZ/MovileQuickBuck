@@ -292,6 +292,7 @@ MonoBehaviour:
       o cargo na hist\xF3ria do  Pa\xEDs."
   pieThrowEffect: {fileID: 8300000, guid: e70ee31ca90274fed82f00b1fa562b69, type: 3}
   pieSplashEffect: {fileID: 8300000, guid: a9308463ab62843fb872e65a1597ea6e, type: 3}
+  speechEffect: {fileID: 8300000, guid: 29f74cf7f5e2340aeb85d4160e95a190, type: 3}
   updateSkin: 0
 --- !u!212 &21212440
 SpriteRenderer:
@@ -540,6 +541,10 @@ Prefab:
       propertyPath: pieSplashEffect
       value: 
       objectReference: {fileID: 8300000, guid: a9308463ab62843fb872e65a1597ea6e, type: 3}
+    - target: {fileID: 0}
+      propertyPath: speechEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: 29f74cf7f5e2340aeb85d4160e95a190, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 123054}
