@@ -278,6 +278,7 @@ MonoBehaviour:
     HandL: {fileID: 21238642}
     HandR: {fileID: 21296284}
   storeValues:
+    purchaseType: 0
     PRODUCT_ID: char_jbolsonaro
     Name: Jair Bolsonaro
     Description: Desbloqueie Jair Bolsonaro
@@ -290,6 +291,8 @@ MonoBehaviour:
       pelo Partido Progressista com a grande maioria dos votos nas elei\xE7\xF5es
       de 2014. Bolsonaro \xE9 conhecido por seus valores consevadores e defesa \xE0s
       pr\xE1ticas militares."
+  pieThrowEffect: {fileID: 8300000, guid: e70ee31ca90274fed82f00b1fa562b69, type: 3}
+  pieSplashEffect: {fileID: 8300000, guid: a9308463ab62843fb872e65a1597ea6e, type: 3}
   updateSkin: 0
 --- !u!212 &21200984
 SpriteRenderer:
@@ -499,6 +502,14 @@ Prefab:
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pieThrowEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: e70ee31ca90274fed82f00b1fa562b69, type: 3}
+    - target: {fileID: 0}
+      propertyPath: pieSplashEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: a9308463ab62843fb872e65a1597ea6e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131878}

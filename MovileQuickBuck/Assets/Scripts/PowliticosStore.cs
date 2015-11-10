@@ -113,7 +113,7 @@ public class PowliticosStore : MonoBehaviour {
 		selectionPanel.UnselectAllButtons();
 		controller.NullConfirm ();
 		if (!controller.isInArcadeMode ()) {
-			controller.PlaySoundEffect(urna, 0.6f);
+			AudioControl.GetInstance().PlaySoundEffect(urna, 0.6f);
 		}
 	}
 
@@ -131,7 +131,7 @@ public class PowliticosStore : MonoBehaviour {
 		controller.ConfirmSelection();
 		selectionPanel.UnselectAllButtons();
 		if (!controller.isInArcadeMode ()) {
-			controller.PlaySoundEffect(urna, 0.6f);
+			AudioControl.GetInstance().PlaySoundEffect(urna, 0.6f);
 		}
 
 	}
@@ -172,14 +172,14 @@ public class PowliticosStore : MonoBehaviour {
 			Powlitico powButton = controller.powliticos[index];
 
 			//Verifico se tenho este personagem para compra ou se ele já é desbloqueado
-			if (StoreInventory.GetItemBalance (powButton.storeValues.PRODUCT_ID) > 0 || powButton.purchaseType == PurchaseType.UNLOCKED) {
+			if (StoreInventory.GetItemBalance (powButton.storeValues.PRODUCT_ID) > 0 || powButton.storeValues.purchaseType == PurchaseType.UNLOCKED) {
 
 				//Seleciono este personagem
 				SelectButton(index);
 				
 			} else {
 
-				if (powButton.purchaseType == PurchaseType.ADS){
+				if (powButton.storeValues.purchaseType == PurchaseType.ADS){
 					//Caso seja desbloqueado por ADS
 					LoadADSAlertPurchase(buttonType);
 

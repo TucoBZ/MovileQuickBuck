@@ -4,6 +4,6 @@ using System.Collections;
 public class Creditos : MonoBehaviour {
 
 	public void Back(){
-		Application.LoadLevel(0);
+		Application.LoadLevel((int)Scenes.MainMenu);
 	}
 }

@@ -328,6 +328,7 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 		if (_playerUpError && _playerDownError) {
 
 			powImage.SetActive (false);
+			_textCenter.gameObject.SetActive (true);
 			_textCenter.color = Color.black;
 
 			_textCenter.text = "Os dois erraram!";

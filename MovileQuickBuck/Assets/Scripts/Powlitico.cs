@@ -31,6 +31,10 @@ public class PowliticoSpriteRenderer {
 //Informações de compra do personagem
 [System.Serializable]
 public class PowliticoStoreValues {
+
+	///Tipo de Compra deste Personagem
+	public PurchaseType purchaseType;
+
 	public string PRODUCT_ID;
 	public string Name;
 	public string Description;
@@ -77,9 +81,16 @@ public class Powlitico : MonoBehaviour {
 	///Info deste Personagem
 	public PowliticoInfo info;
 
-	public PurchaseType purchaseType;
-
+	///Som de arremesso de torta
+	public AudioClip pieThrowEffect;
+	///Som de Splash da torta
+	public AudioClip pieSplashEffect;
+	///Som do Speech
+	public AudioClip speechEffect;
+	///Ativa troca de Imagens no Editor
 	public bool updateSkin = false;
+
+	///Animador do personagem
 	private Animator animator;
 
 	public void setSkin(){
@@ -108,6 +119,7 @@ public class Powlitico : MonoBehaviour {
 
 	//Animation
 	public void ThrowPie(){
+		AudioControl.GetInstance ().PlaySoundEffect (pieThrowEffect, 1.1f);
 		animator.SetTrigger("ThrowPie");
 	}
 
@@ -119,4 +131,17 @@ public class Powlitico : MonoBehaviour {
 		animator.SetBool("Fail",false);
 	}
 
+	public void PlayPieSound(){
+
+		AudioControl.GetInstance ().PlaySoundEffect (pieThrowEffect, 1.1f);
+
+	}
+
+	public void PlayPieSplashSound(){
+		if (!animator.GetBool ("Fail")) {
+			AudioControl.GetInstance ().PlaySoundEffect (pieSplashEffect, 0.4f);
+		}
+	}
+
+	public void PlaySpeech(){}
 }

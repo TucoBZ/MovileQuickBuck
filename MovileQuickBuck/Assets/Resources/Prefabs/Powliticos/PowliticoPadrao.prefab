@@ -260,6 +260,7 @@ MonoBehaviour:
     HandL: {fileID: 21296612}
     HandR: {fileID: 21282680}
   storeValues:
+    purchaseType: 0
     PRODUCT_ID: 
     Name: 
     Description: 
@@ -269,14 +270,9 @@ MonoBehaviour:
     Partido: 
     Twitter: 
     Description: 
+  pieThrowEffect: {fileID: 8300000, guid: e70ee31ca90274fed82f00b1fa562b69, type: 3}
+  pieSplashEffect: {fileID: 8300000, guid: a9308463ab62843fb872e65a1597ea6e, type: 3}
   updateSkin: 0
-  Head: {fileID: 0}
-  Body: {fileID: 0}
-  FootD: {fileID: 0}
-  FootE: {fileID: 0}
-  HandD: {fileID: 0}
-  HandE: {fileID: 0}
-  RandomImg: {fileID: 0}
 --- !u!212 &21222998
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -470,6 +466,14 @@ Prefab:
       propertyPath: info.Nome
       value: "Aleat\xF3rio"
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pieThrowEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: e70ee31ca90274fed82f00b1fa562b69, type: 3}
+    - target: {fileID: 0}
+      propertyPath: pieSplashEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: a9308463ab62843fb872e65a1597ea6e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 111794}

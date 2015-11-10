@@ -32,11 +32,6 @@ public class GameController : MonoBehaviour{
 	///Objeto que representa o Jogador Vencedor, usado tbm na tela de Informações
 	public Powlitico powWinner;
 
-	///Fonte de audio de Background
-	public AudioSource bgmusic;
-	///Fonte de audio de efeitos
-	public AudioSource effect;
-
 	///Botão de Versus (Rever isso aqui)
 	public Button versusBT;
 
@@ -60,7 +55,7 @@ public class GameController : MonoBehaviour{
 	}
 
 	///Instância atual do GameController
-	public GameController GetInstance (){
+	public static GameController GetInstance (){
 		return sharedInstance;
 	}
 
@@ -78,14 +73,7 @@ public class GameController : MonoBehaviour{
 
 		selectStatus = GameSelection.P1_CONFIRM;
 	}
-
-	///Toca um som de efeito, possível passar em que posição o som precisa começar a tocar
-	public void PlaySoundEffect(AudioClip clip, float offset){
-		effect.clip = clip;
-		effect.time = offset;
-		effect.Play();
-	}
-
+	
 	///Substitui Pow1 e Pow2 pelos tipos indicados em player1 e player2.
 	///OBS: Ao usar essa função você perderá a referência dos Powliticos de Pow1 e Pow2 da sua classe
 	/// , favor pegar a referência novamente de pow1 e pow2 desta classe.
@@ -299,6 +287,7 @@ public class GameController : MonoBehaviour{
 		return powlitico;
 	}
 
+	///Devolve Todas os Produtos Vendidos do Jogo, para ser alimentado no Soomla
 	public VirtualGood[] AllVirtualGoods()
 	{
 		VirtualGood[] goods = new VirtualGood[powliticos.Length-1];

@@ -7,7 +7,7 @@ public enum Scenes {SplashScreen, MainMenu, CharSelection, Multiplayer, Arcade, 
 public class SplashScreen : MonoBehaviour {
 	
 	void Start () {
-		StartCoroutine (WaitToDestroy (2.5f));
+		StartCoroutine (WaitToDestroy (1.7f));
 	}
 	
 	IEnumerator WaitToDestroy(float time) {

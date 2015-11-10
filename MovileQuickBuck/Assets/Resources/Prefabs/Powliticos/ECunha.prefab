@@ -278,6 +278,7 @@ MonoBehaviour:
     HandL: {fileID: 21289152}
     HandR: {fileID: 21228790}
   storeValues:
+    purchaseType: 2
     PRODUCT_ID: char_ecunha
     Name: Eduardo Cunha
     Description: Desbloqueie Eduardo Cunha
@@ -290,7 +291,8 @@ MonoBehaviour:
       brasileiro. Evang\xE9lico, \xE9 membro da igreja neopentecostal Sara Nossa Terra.
       Atualmente \xE9 deputado federal pelo Partido do Movimento Democr\xE1tico Brasileiro
       pelo Rio de Janeiro."
-  purchaseType: 2
+  pieThrowEffect: {fileID: 8300000, guid: e70ee31ca90274fed82f00b1fa562b69, type: 3}
+  pieSplashEffect: {fileID: 8300000, guid: a9308463ab62843fb872e65a1597ea6e, type: 3}
   updateSkin: 0
 --- !u!212 &21214030
 SpriteRenderer:
@@ -556,6 +558,18 @@ Prefab:
       propertyPath: purchaseType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pieThrowEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: e70ee31ca90274fed82f00b1fa562b69, type: 3}
+    - target: {fileID: 0}
+      propertyPath: storeValues.purchaseType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pieSplashEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: a9308463ab62843fb872e65a1597ea6e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 171810}
