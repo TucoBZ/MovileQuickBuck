@@ -268,6 +268,10 @@ public class GameController : MonoBehaviour{
 		return (selectStatus == GameSelection.READY) ? true : false;
 	}
 
+	///Recupera o estado atual de seleção do Jogo
+	public GameSelection getSelectionState(){
+		return selectStatus;
+	}
 	///Devolve o Nome Real do Personagem tirando da Info do Powlitico
 	public string CharName(CharType type){
 		return powliticoForCharType(type).info.Nome;

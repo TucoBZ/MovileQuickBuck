@@ -278,7 +278,7 @@ MonoBehaviour:
     HandL: {fileID: 21289152}
     HandR: {fileID: 21228790}
   storeValues:
-    purchaseType: 0
+    purchaseType: 1
     PRODUCT_ID: char_jwyllys
     Name: Jean Wyllys
     Description: Desbloqueie Jean Wyllys
@@ -557,6 +557,10 @@ Prefab:
       propertyPath: speechEffect
       value: 
       objectReference: {fileID: 8300000, guid: 22ae8300eb6724e6497cd7ac7469848c, type: 3}
+    - target: {fileID: 0}
+      propertyPath: storeValues.purchaseType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 171810}

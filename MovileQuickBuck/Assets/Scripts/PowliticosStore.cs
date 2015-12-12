@@ -73,19 +73,26 @@ public class PowliticosStore : MonoBehaviour {
 		}
 
 		StartStoreEvents();
-		
+
+		ConfirmButtonForControllerState (controller.getSelectionState ());
 	}
 
 	void Update(){
 
-		if (controller != null) {
-			if (controller.isReady()) {
-				SetAllButtonsInteractable(false);
-				versusAnimator.SetBool("ready",true);
-			} else if (versusAnimator.GetBool("ready")){
-				versusAnimator.SetBool("ready",false);
-			}
+	}
+
+	public void ConfirmButtonForControllerState(GameSelection state){
+
+		if (state == GameSelection.READY) {
+			ButtonLabel button = confirmBT.GetComponent<ButtonLabel> ();
+			button.label.text = "Jogar";
+			Debug.Log ("Jogar");
+		} else {
+			ButtonLabel button = confirmBT.GetComponent<ButtonLabel> ();
+			button.label.text = "Confirmar";
+			Debug.Log ("Confirmar");
 		}
+
 	}
 
 	///Seleciona Visualmente o botão de Seleção
@@ -123,6 +130,7 @@ public class PowliticosStore : MonoBehaviour {
 		controller.UndoSelection ();
 		SetAllButtonsInteractable(true);
 
+		ConfirmButtonForControllerState (controller.getSelectionState ());
 	}
 
 	///Ação do botão de Confirma
@@ -130,9 +138,12 @@ public class PowliticosStore : MonoBehaviour {
 
 		controller.ConfirmSelection();
 		selectionPanel.UnselectAllButtons();
-		if (!controller.isInArcadeMode ()) {
-			AudioControl.GetInstance().PlaySoundEffect(urna, 0.6f);
-		}
+		AudioControl.GetInstance().PlaySoundEffect(urna, 0.6f);
+
+		ConfirmButtonForControllerState (controller.getSelectionState ());
+//		if (!controller.isInArcadeMode ()) {
+//			AudioControl.GetInstance().PlaySoundEffect(urna, 0.6f);
+//		}
 
 	}
 
