@@ -262,8 +262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   sprites:
-    SelectedHead: {fileID: 21300000, guid: e0f8163c535064d91818bd704321035d, type: 3}
-    UnselectedHead: {fileID: 21300002, guid: e0f8163c535064d91818bd704321035d, type: 3}
+    SelectedHead: {fileID: 21300004, guid: 58f0fc4b991d14ebf92cbb20120fee53, type: 3}
+    UnselectedHead: {fileID: 21300006, guid: 58f0fc4b991d14ebf92cbb20120fee53, type: 3}
     Head: {fileID: 21300006, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
     Body: {fileID: 21300012, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
     FootL: {fileID: 21300018, guid: 012d3a8c26d9645e0b3d29a4124877a3, type: 3}
@@ -515,6 +515,16 @@ Prefab:
       propertyPath: speechEffect
       value: 
       objectReference: {fileID: 8300000, guid: d37b1edde6fbc4ad9bb63b313bf019b5, type: 3}
+    - target: {fileID: 0}
+      propertyPath: sprites.SelectedHead
+      value: 
+      objectReference: {fileID: 21300004, guid: 58f0fc4b991d14ebf92cbb20120fee53,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: sprites.UnselectedHead
+      value: 
+      objectReference: {fileID: 21300006, guid: 58f0fc4b991d14ebf92cbb20120fee53,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131878}

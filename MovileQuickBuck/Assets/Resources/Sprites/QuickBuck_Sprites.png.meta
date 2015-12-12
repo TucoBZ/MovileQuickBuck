@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 012d3a8c26d9645e0b3d29a4124877a3
-timeCreated: 1446729626
+timeCreated: 1449934509
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -102,10 +102,10 @@ TextureImporter:
     - name: QuickBuck Sprites_3
       rect:
         serializedVersion: 2
-        x: 1496
-        y: 1650
-        width: 200
-        height: 213
+        x: 1492
+        y: 1648
+        width: 208
+        height: 225
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

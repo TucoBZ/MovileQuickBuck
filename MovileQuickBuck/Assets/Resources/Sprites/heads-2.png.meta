@@ -1,11 +1,13 @@
 fileFormatVersion: 2
 guid: 58f0fc4b991d14ebf92cbb20120fee53
-timeCreated: 1447096324
+timeCreated: 1449934376
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: heads-2_0
     21300002: heads-2_1
+    21300004: heads-2_2
+    21300006: heads-2_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -66,9 +68,29 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 205
-        y: 261
+        y: 260
         width: 116
-        height: 123
+        height: 124
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: heads-2_2
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 451
+        width: 114
+        height: 121
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: heads-2_3
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 450
+        width: 118
+        height: 126
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
