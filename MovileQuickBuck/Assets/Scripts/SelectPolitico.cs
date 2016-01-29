@@ -34,7 +34,7 @@ public class SelectPolitico : MonoBehaviour {
 
 		//Deixo o primeiro botão selecionado
 		SelectChar (0);
-
+		selectionPanel.SetAllButtonsInteractable (true);
 	}
 
 	///Ação do Botão de voltar
