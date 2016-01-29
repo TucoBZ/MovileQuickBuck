@@ -10,7 +10,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuPrincipal.unity
   - enabled: 1
-    path: Assets/Scenes/CharacterSelection.unity
+    path: Assets/Scenes/CharacterSelectionV2.unity
   - enabled: 1
     path: Assets/Scenes/MultiplayerGameScene.unity
   - enabled: 1
