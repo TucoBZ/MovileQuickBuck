@@ -208,7 +208,10 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			
 			break;
 		case GameState.WinnerTime:
-			
+
+			powImage.SetActive (false);
+			_textCenter.color = Color.black;
+			_textCenter.gameObject.SetActive (false);
 			CheckWinner();
 			
 			break;
@@ -252,8 +255,9 @@ public class GameArcadeManager : MonoBehaviour, TouchObserver {
 			
 			ShowDownMenu();
 			
-			_textButtonDown.text = "Jogar de novo?";
-			_playerDownButton.gameObject.SetActive(true);
+//			_textButtonDown.text = "Jogar de novo?";
+//			_playerDownButton.gameObject.SetActive(true);
+			ChangeStateTo(GameState.Default);
 		}
 		
 		

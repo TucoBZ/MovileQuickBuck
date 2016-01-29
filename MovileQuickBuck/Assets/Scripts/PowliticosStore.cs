@@ -52,7 +52,8 @@ public class PowliticosStore : MonoBehaviour {
 
 	void Start ()
 	{
-		PlayerPrefs.DeleteAll ();
+		//Delete all user prefs, debug only
+		//PlayerPrefs.DeleteAll ();
 
 		indexP1 = -1;
 		indexP2 = -1;

@@ -243,6 +243,9 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			break;
 		case GameState.WinnerTime:
 
+			powImage.SetActive (false);
+			_textCenter.color = Color.black;
+			_textCenter.gameObject.SetActive (false);
 			CheckWinner();
 		
 			break;
@@ -283,8 +286,9 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 			ShowUpMenu();
 			ShowDownMenu();
 			
-			_textButtonDown.text = "Jogar de novo?";
-			_playerDownButton.gameObject.SetActive(true);
+//			_textButtonDown.text = "Jogar de novo?";
+//			_playerDownButton.gameObject.SetActive(true);
+			ChangeStateTo(GameState.Default);
 		}
 
 	}
@@ -339,11 +343,11 @@ public class GameMultiplayerManager : MonoBehaviour, TouchObserver {
 
 			ChangeStateTo (GameState.OnGame);
 
-			yield return new WaitForSeconds (1.5f);
+			//yield return new WaitForSeconds (1.5f);
 			
-			powImage.SetActive (false);
-			_textCenter.color = Color.black;
-			_textCenter.gameObject.SetActive (false);
+//			powImage.SetActive (false);
+//			_textCenter.color = Color.black;
+//			_textCenter.gameObject.SetActive (false);
 
 		}
 

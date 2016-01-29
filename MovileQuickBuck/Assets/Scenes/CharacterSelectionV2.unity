@@ -2244,10 +2244,10 @@ RectTransform:
   - {fileID: 1175615102}
   m_Father: {fileID: 1129646839}
   m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 2, y: -162}
-  m_SizeDelta: {x: 202, y: 84}
+  m_AnchorMin: {x: .17400001, y: .0657537133}
+  m_AnchorMax: {x: .855374098, y: .240261167}
+  m_AnchoredPosition: {x: -2, y: 1}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &544899109
 MonoBehaviour:
