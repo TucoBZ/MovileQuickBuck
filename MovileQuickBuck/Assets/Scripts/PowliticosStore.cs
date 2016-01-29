@@ -16,7 +16,7 @@ public class PowliticosStore : MonoBehaviour {
 	/// Botão de Refazer
 	public Button undoBT;
 	/// Botão de Confirmar
-	public Button confirmBT;
+	public ButtonLabel confirmBT;
 	/// Botão de Versus
 	public Button versusBT;
 	/// Aniamador do Botão de Aleatório
@@ -43,9 +43,19 @@ public class PowliticosStore : MonoBehaviour {
 
 	private CharType charTypeADS;
 
+	///index de seleção do P1
+	private int indexP1;
+	///index de seleção do P2
+	private int indexP2;
+
+
+
 	void Start ()
 	{
 		PlayerPrefs.DeleteAll ();
+
+		indexP1 = -1;
+		indexP2 = -1;
 
 		//Ajuste do Controller
 		GameObject gmControl = GameObject.FindGameObjectWithTag ("GameController");
@@ -58,8 +68,10 @@ public class PowliticosStore : MonoBehaviour {
 			controller.player2Name = p2Name;
 			controller.pow1 = pow1;
 			controller.pow2 = pow2;
-			controller.versusBT = versusBT;
+			//controller.versusBT = versusBT;
 			controller.ResetGame ();
+			//pow1 = controller.pow1;
+			//pow2 = controller.pow2;
 
 			if (controller.isInArcadeMode()) {
 				gameMode.text = "Arcade";	
@@ -82,29 +94,56 @@ public class PowliticosStore : MonoBehaviour {
 	}
 
 	public void ConfirmButtonForControllerState(GameSelection state){
-
 		if (state == GameSelection.READY) {
-			ButtonLabel button = confirmBT.GetComponent<ButtonLabel> ();
-			button.label.text = "Jogar";
-			Debug.Log ("Jogar");
-		} else {
-			ButtonLabel button = confirmBT.GetComponent<ButtonLabel> ();
-			button.label.text = "Confirmar";
-			Debug.Log ("Confirmar");
+			SetAllButtonsInteractable (false);
 		}
-
+		confirmBT.changeButtonToType(state);
 	}
 
 	///Seleciona Visualmente o botão de Seleção
 	private void SelectButton(int index){
 
-		selectionPanel.UnselectAllButtons();
-		selectionPanel.buttons[index].SelectButton();
+		switch (controller.getSelectionState()) {
+		case GameSelection.P1_CONFIRM:
+			indexP1 = index;
+			break;
+		case GameSelection.P2_CONFIRM:
+			indexP2 = index;
+			break;
+		case GameSelection.READY:
 
+			break;
+		default:
+			break;
+		}
+
+		SelectButtonsForIndexs();
 		SetAllButtonsInteractable (true);
 
 		SelectCharInController(selectionPanel.buttons[index].buttonType);
 
+	}
+
+	///Seleciona no Controler o personagem dado o tipo dele
+	private void SelectButtonsForIndexs(){
+
+		selectionPanel.UnselectAllButtons();
+
+		if (indexP1 > -1 && indexP2 > -1 && indexP1 == indexP2) {
+			selectionPanel.buttons[indexP1].selection = SELECTIONBUTTONTYPE.P1ANDP2SELECTED;
+			selectionPanel.buttons[indexP1].SelectButton();
+		}
+
+		if (indexP1 > -1 && indexP1 != indexP2) {
+			selectionPanel.buttons [indexP1].selection = SELECTIONBUTTONTYPE.P1SELECTED;
+			selectionPanel.buttons [indexP1].SelectButton ();
+		} 
+
+		if (indexP2 > -1 && indexP1 != indexP2) {
+			selectionPanel.buttons[indexP2].selection = SELECTIONBUTTONTYPE.P2SELECTED;
+			selectionPanel.buttons[indexP2].SelectButton();
+		}
+		
 	}
 
 	///Seleciona no Controler o personagem dado o tipo dele
@@ -117,33 +156,63 @@ public class PowliticosStore : MonoBehaviour {
 	///Ação do botão de Aleatório
 	public void RandomBT(){
 
-		selectionPanel.UnselectAllButtons();
-		controller.NullConfirm ();
-		if (!controller.isInArcadeMode ()) {
+		if (controller.getSelectionState () != GameSelection.READY) {
+
+			switch (controller.getSelectionState()) {
+			case GameSelection.P1_CONFIRM:
+				indexP1 = -1;
+				break;
+			case GameSelection.P2_CONFIRM:
+				indexP2 = -1;
+				break;
+			case GameSelection.READY:
+				break;
+			default:
+				break;
+			}
+			controller.NullConfirm ();
 			AudioControl.GetInstance().PlaySoundEffect(urna, 0.6f);
+			SelectButtonsForIndexs();	
+			ConfirmButtonForControllerState (controller.getSelectionState ());
 		}
+
 	}
 
 	///Ação do botão de Corrige
 	public void CancelBT(){
 
 		controller.UndoSelection ();
-		SetAllButtonsInteractable(true);
 
+		switch (controller.getSelectionState()) {
+		case GameSelection.P1_CONFIRM:
+			indexP1 = -1;
+			break;
+		case GameSelection.P2_CONFIRM:
+			indexP2 = -1;
+			break;
+		case GameSelection.READY:
+			break;
+		default:
+			break;
+		}
+
+		SelectButtonsForIndexs();
+		SetAllButtonsInteractable(true);
 		ConfirmButtonForControllerState (controller.getSelectionState ());
 	}
 
 	///Ação do botão de Confirma
 	public void ConfirmBT(){
 
+		if (controller.getSelectionState () == GameSelection.READY) {
+			StartVS();
+		}
+
 		controller.ConfirmSelection();
-		selectionPanel.UnselectAllButtons();
+		//selectionPanel.UnselectAllButtons();
 		AudioControl.GetInstance().PlaySoundEffect(urna, 0.6f);
 
 		ConfirmButtonForControllerState (controller.getSelectionState ());
-//		if (!controller.isInArcadeMode ()) {
-//			AudioControl.GetInstance().PlaySoundEffect(urna, 0.6f);
-//		}
 
 	}
 
@@ -202,8 +271,8 @@ public class PowliticosStore : MonoBehaviour {
 			}	
 
 		} else {
-
-			SelectButton(index);
+			SetAllButtonsInteractable (true);
+			//SelectButton(index);
 
 		}
 

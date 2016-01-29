@@ -11,7 +11,7 @@ public class MenuPrincipal : MonoBehaviour {
 		controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 		controller.player1Name = null;
 		controller.player2Name = null;
-		controller.versusBT = null;
+		//controller.versusBT = null;
 		controller.ResetGame ();
 
 	}

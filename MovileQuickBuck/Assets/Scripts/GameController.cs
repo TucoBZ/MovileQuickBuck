@@ -32,8 +32,8 @@ public class GameController : MonoBehaviour{
 	///Objeto que representa o Jogador Vencedor, usado tbm na tela de Informações
 	public Powlitico powWinner;
 
-	///Botão de Versus (Rever isso aqui)
-	public Button versusBT;
+	///Botão de confirmar
+	public ButtonLabel confirmBT;
 
 	///Máquina de estados de seleção de personagem
 	private GameSelection selectStatus = GameSelection.P1_CONFIRM;
@@ -67,9 +67,9 @@ public class GameController : MonoBehaviour{
 
 		SetName();
 
-		if (versusBT != null) {
-			versusBT.interactable = false;
-		}
+//		if (versusBT != null) {
+//			versusBT.interactable = false;
+//		}
 
 		selectStatus = GameSelection.P1_CONFIRM;
 	}
@@ -200,7 +200,7 @@ public class GameController : MonoBehaviour{
 			switch (selectStatus) {
 			case GameSelection.READY:
 				selectStatus = GameSelection.P1_CONFIRM;
-				versusBT.interactable = false;
+				//versusBT.interactable = false;
 				break;
 			default:
 				break;
@@ -213,13 +213,13 @@ public class GameController : MonoBehaviour{
 				break;
 			case GameSelection.READY:
 				selectStatus = GameSelection.P2_CONFIRM;
-				versusBT.interactable = false;
 				break;
 			default:
 				break;
 			}
 		}
 
+		changePlayerSelection (CharType.RANDOM);
 
 	}
 
@@ -236,7 +236,7 @@ public class GameController : MonoBehaviour{
 			switch (selectStatus) {
 			case GameSelection.P1_CONFIRM:
 				selectStatus = GameSelection.READY;
-				versusBT.interactable = true;
+				//versusBT.interactable = true;
 				break;
 			default:
 				break;
@@ -250,7 +250,7 @@ public class GameController : MonoBehaviour{
 				break;
 			case GameSelection.P2_CONFIRM:
 				selectStatus = GameSelection.READY;
-				versusBT.interactable = true;
+				//versusBT.interactable = true;
 				break;
 			default:
 				break;
